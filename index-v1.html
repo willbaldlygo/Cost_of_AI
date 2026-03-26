@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An interactive, research-backed dashboard showing the electricity, water, and carbon cost of AI tasks — plus practical advice on reducing your impact.">
+  <title>The True Cost of AI — What happens to the planet every time you press Enter</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Sticky Header -->
+  <nav class="site-header" aria-label="Site navigation">
+    <button class="header-link" id="btn-sources-header" aria-haspopup="dialog">Research Sources</button>
+    <button class="header-link" id="btn-methodology-header" aria-haspopup="dialog">Methodology</button>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1 class="hero__title">The True Cost of AI</h1>
+      <p class="hero__subtitle">What happens to the planet every time you press Enter — and what you can do about it</p>
+      <p class="hero__intro">
+        Every AI interaction has a measurable environmental footprint — electricity, water, and carbon.
+        The figures on this page are research-based estimates compiled from 32 peer-reviewed and institutional sources,
+        not exact measurements. The good news? Small changes in how you use AI can make a real difference.
+      </p>
+      <div class="hero__nav">
+        <a href="#impact" class="btn btn--impact">⚡ See the Impact</a>
+        <a href="#solutions" class="btn btn--solutions">🌿 Reduce Your Impact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: The Impact -->
+  <section id="impact" class="section-impact" aria-labelledby="impact-title">
+    <div class="container">
+      <h2 class="section-title" id="impact-title">The Impact</h2>
+      <p class="section-subtitle">Choose a task to see its environmental cost</p>
+
+      <!-- Task Selector -->
+      <div class="task-selector" id="task-selector" role="tablist" aria-label="AI task categories">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Detail Panel -->
+      <div class="detail-panel" id="detail-panel" role="tabpanel" aria-live="polite">
+        <!-- Training banner -->
+        <div class="training-banner" id="training-banner">
+          ⚠️ This is a <strong>one-time training cost</strong>, not a per-use cost.
+        </div>
+
+        <p class="detail-panel__description" id="task-description"></p>
+
+        <!-- Metric Cards -->
+        <div class="metrics-row" id="metrics-row">
+          <!-- Electricity -->
+          <div class="metric-card metric-card--electricity">
+            <div class="metric-card__icon">⚡</div>
+            <div class="metric-card__label">Electricity</div>
+            <div class="metric-card__value">
+              <span id="metric-elec-value">0</span>
+              <span class="metric-card__unit" id="metric-elec-unit"></span>
+            </div>
+            <div class="metric-card__range" id="metric-elec-range"></div>
+            <div class="confidence-badge" id="confidence-elec" tabindex="0" aria-label="Confidence level">
+              <span class="confidence-dot" id="confidence-elec-dot"></span>
+              <span class="confidence-badge__tooltip" id="confidence-elec-tip"></span>
+            </div>
+            <div class="metric-card__comparison">
+              <span class="metric-card__comparison-icon">💡</span>
+              <span id="comparison-elec"></span>
+            </div>
+          </div>
+
+          <!-- Water -->
+          <div class="metric-card metric-card--water">
+            <div class="metric-card__icon">💧</div>
+            <div class="metric-card__label">Water</div>
+            <div class="metric-card__value">
+              <span id="metric-water-value">0</span>
+              <span class="metric-card__unit" id="metric-water-unit"></span>
+            </div>
+            <div class="metric-card__range" id="metric-water-range"></div>
+            <div class="confidence-badge" id="confidence-water" tabindex="0" aria-label="Confidence level">
+              <span class="confidence-dot" id="confidence-water-dot"></span>
+              <span class="confidence-badge__tooltip" id="confidence-water-tip"></span>
+            </div>
+            <div class="metric-card__comparison">
+              <span class="metric-card__comparison-icon">🚿</span>
+              <span id="comparison-water"></span>
+            </div>
+          </div>
+
+          <!-- Carbon -->
+          <div class="metric-card metric-card--carbon">
+            <div class="metric-card__icon">🌿</div>
+            <div class="metric-card__label">Carbon</div>
+            <div class="metric-card__value">
+              <span id="metric-carbon-value">0</span>
+              <span class="metric-card__unit" id="metric-carbon-unit"></span>
+            </div>
+            <div class="metric-card__range" id="metric-carbon-range"></div>
+            <div class="confidence-badge" id="confidence-carbon" tabindex="0" aria-label="Confidence level">
+              <span class="confidence-dot" id="confidence-carbon-dot"></span>
+              <span class="confidence-badge__tooltip" id="confidence-carbon-tip"></span>
+            </div>
+            <div class="metric-card__comparison">
+              <span class="metric-card__comparison-icon">🚗</span>
+              <span id="comparison-carbon"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: What You Can Do -->
+  <section id="solutions" class="section-solutions" aria-labelledby="solutions-title">
+    <div class="container">
+      <h2 class="section-title" id="solutions-title">What You Can Do</h2>
+      <p class="section-subtitle">Practical, research-backed ways to reduce your AI footprint</p>
+
+      <!-- Key stat callout -->
+      <blockquote class="key-stat" id="key-stat">
+        <p class="key-stat__quote" id="key-stat-quote"></p>
+        <cite class="key-stat__source" id="key-stat-source"></cite>
+      </blockquote>
+
+      <!-- Advice Tiers -->
+      <div class="advice-tiers" id="advice-tiers">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer__credit">Created by Will / Digital Peninsula Network, 2026</p>
+      <p class="footer__disclaimer">Data compiled from 32 peer-reviewed and institutional sources. All figures are estimates.</p>
+      <div class="footer__links">
+        <button id="btn-sources-footer">Research Sources</button>
+        <button id="btn-methodology-footer">Methodology</button>
+      </div>
+      <p class="footer__ai-note">This page was built with the help of AI. We estimate the total environmental cost of the research and development process at approximately [X] — see our methodology for details.</p>
+    </div>
+  </footer>
+
+  <!-- Sources Modal -->
+  <div class="modal-overlay" id="sources-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="sources-modal-title">
+    <div class="modal" id="sources-modal">
+      <button class="modal__close" id="sources-modal-close" aria-label="Close">&times;</button>
+      <h2 class="modal__title" id="sources-modal-title">Research Sources</h2>
+      <div id="sources-modal-content">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Methodology Modal -->
+  <div class="modal-overlay" id="methodology-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="methodology-modal-title">
+    <div class="modal" id="methodology-modal">
+      <button class="modal__close" id="methodology-modal-close" aria-label="Close">&times;</button>
+      <h2 class="modal__title" id="methodology-modal-title">Our Methodology</h2>
+      <div id="methodology-modal-content">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
