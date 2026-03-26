@@ -154,7 +154,48 @@
         <button id="btn-sources-footer">Research Sources</button>
         <button id="btn-methodology-footer">Methodology</button>
       </div>
-      <p class="footer__ai-note">This page was built with the help of AI. We estimate the total environmental cost of the research and development process at approximately [X] — see our methodology for details.</p>
+
+      <!-- AI environmental cost of building this page -->
+      <div class="footer__cost-section">
+        <p class="footer__cost-intro">This page was built with the help of AI. Here is our estimate of the environmental cost of the research and development process, using this site's own methodology:</p>
+
+        <div class="footer__cost-grid">
+          <!-- Phase rows -->
+          <div class="footer__cost-row footer__cost-row--header">
+            <span class="footer__cost-cell footer__cost-cell--phase">Phase</span>
+            <span class="footer__cost-cell">⚡ Electricity</span>
+            <span class="footer__cost-cell">💧 Water</span>
+            <span class="footer__cost-cell">🌿 Carbon</span>
+          </div>
+          <div class="footer__cost-row">
+            <span class="footer__cost-cell footer__cost-cell--phase">Planning chat with Claude (~50 exchanges)</span>
+            <span class="footer__cost-cell">40 Wh</span>
+            <span class="footer__cost-cell">100 ml</span>
+            <span class="footer__cost-cell">15.5 g CO₂</span>
+          </div>
+          <div class="footer__cost-row">
+            <span class="footer__cost-cell footer__cost-cell--phase">Deep Research (1 session)</span>
+            <span class="footer__cost-cell">20 Wh</span>
+            <span class="footer__cost-cell">36 ml</span>
+            <span class="footer__cost-cell">7.8 g CO₂</span>
+          </div>
+          <div class="footer__cost-row">
+            <span class="footer__cost-cell footer__cost-cell--phase">Coding in AntiGravity (~80 exchanges)</span>
+            <span class="footer__cost-cell">120 Wh</span>
+            <span class="footer__cost-cell">200 ml</span>
+            <span class="footer__cost-cell">47.2 g CO₂</span>
+          </div>
+          <div class="footer__cost-row footer__cost-row--total">
+            <span class="footer__cost-cell footer__cost-cell--phase">Estimated Total</span>
+            <span class="footer__cost-cell">≈ 180 Wh</span>
+            <span class="footer__cost-cell">≈ 336 ml</span>
+            <span class="footer__cost-cell">≈ 70.5 g CO₂</span>
+          </div>
+        </div>
+
+        <p class="footer__cost-comparison">That's roughly equivalent to boiling 9 kettles of water (electricity), two thirds of a bottle of water (water consumption), or driving a petrol car about 180 metres (carbon).</p>
+        <p class="footer__cost-note">Estimates based on this site's own per-query figures. Chat exchanges use an average of 0.8–1.5 Wh each depending on output length; Deep Research uses our stated 20 Wh central estimate. The actual number of AI exchanges is approximate.</p>
+      </div>
     </div>
   </footer>
 

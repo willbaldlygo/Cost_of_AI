@@ -820,6 +820,101 @@ a:hover { text-decoration: underline; }
   line-height: 1.5;
 }
 
+/* Footer: AI cost breakdown */
+.footer__cost-section {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(216, 195, 173, 0.25);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.footer__cost-intro {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+  text-align: center;
+  font-style: italic;
+}
+
+.footer__cost-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid rgba(216, 195, 173, 0.3);
+}
+
+.footer__cost-row {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.footer__cost-row + .footer__cost-row {
+  border-top: 1px solid rgba(216, 195, 173, 0.2);
+}
+
+.footer__cost-row--header {
+  background: var(--surface-container-high);
+}
+
+.footer__cost-row--header .footer__cost-cell {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--on-surface);
+}
+
+.footer__cost-row--total {
+  background: var(--surface-container-high);
+}
+
+.footer__cost-row--total .footer__cost-cell {
+  font-weight: 700;
+  color: var(--on-surface);
+}
+
+.footer__cost-cell {
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.75rem;
+  color: var(--on-surface-variant);
+  line-height: 1.4;
+}
+
+.footer__cost-cell--phase {
+  font-weight: 500;
+  color: var(--on-surface);
+}
+
+.footer__cost-cell:not(.footer__cost-cell--phase) {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.footer__cost-comparison {
+  font-size: 0.75rem;
+  color: var(--on-surface-variant);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: var(--space-2);
+  font-style: italic;
+}
+
+.footer__cost-note {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  text-align: center;
+}
+
 /* =============================================
    MODAL OVERLAY
    ============================================= */
