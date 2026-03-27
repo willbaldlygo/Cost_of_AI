@@ -288,6 +288,11 @@ const adviceTiers = [
         title: "Build scripts instead of repeating AI tasks",
         body: "Use AI to help you write a Python script, then run the script locally. A script running on milliwatts replaces an AI query using watts.",
         source: null
+      },
+      {
+        title: "Create your own local software solutions",
+        body: "Create your own software solutions built around local AI models to replace workflows you currently carry out using online models.",
+        source: null
       }
     ]
   },
@@ -300,11 +305,6 @@ const adviceTiers = [
       {
         title: "Understand training costs",
         body: "Training GPT-5 consumed ~60,000 MWh — equivalent to billions of queries. This is a fixed cost that users don't control, but understanding it puts per-query costs in perspective.",
-        source: null
-      },
-      {
-        title: "Location matters enormously",
-        body: "The same query has near-zero carbon from a hydro-powered data centre but significant carbon on a coal-heavy grid. Norway: ~0.03 kg CO₂/kWh. India: ~0.71 kg CO₂/kWh — a 24× difference.",
         source: null
       },
       {

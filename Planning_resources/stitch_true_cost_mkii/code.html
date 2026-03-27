@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The True Cost of AI | Sustainable Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800&amp;family=Manrope:wght@400;500;600&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#1c1c16",
+              "surface-container": "#f1eee4",
+              "on-background": "#1c1c16",
+              "primary": "#17340e",
+              "secondary-container": "#fec391",
+              "primary-container": "#2d4b22",
+              "inverse-on-surface": "#f4f0e6",
+              "surface-container-high": "#ece8de",
+              "surface-container-low": "#f7f3e9",
+              "tertiary-container": "#c7a938",
+              "surface": "#fdf9ef",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#31312a",
+              "on-tertiary-fixed-variant": "#554500",
+              "surface-tint": "#47673a",
+              "on-primary-container": "#97bb87",
+              "inverse-primary": "#add19b",
+              "surface-variant": "#e6e2d8",
+              "on-primary-fixed": "#052101",
+              "surface-container-highest": "#e6e2d8",
+              "on-secondary-fixed-variant": "#653e17",
+              "on-secondary-container": "#794e26",
+              "tertiary-fixed": "#ffe17a",
+              "secondary-fixed-dim": "#f5bb89",
+              "primary-fixed-dim": "#add19b",
+              "tertiary-fixed-dim": "#e4c451",
+              "outline": "#73796e",
+              "tertiary": "#715c00",
+              "on-error": "#ffffff",
+              "background": "#fdf9ef",
+              "outline-variant": "#c3c8bc",
+              "on-tertiary-fixed": "#231b00",
+              "secondary": "#80552c",
+              "primary-fixed": "#c8edb5",
+              "on-secondary-fixed": "#2e1600",
+              "surface-dim": "#dddad0",
+              "on-primary-fixed-variant": "#304e25",
+              "surface-bright": "#fdf9ef",
+              "error": "#ba1a1a",
+              "secondary-fixed": "#ffdcc1",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#4d3e00",
+              "on-primary": "#ffffff",
+              "on-surface-variant": "#43483f",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Epilogue"],
+              "body": ["Manrope"],
+              "label": ["Space Grotesk"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cut-paper-sm { border-radius: 4px 12px 8px 6px; }
+        .cut-paper-md { border-radius: 8px 24px 16px 12px; }
+        .cut-paper-lg { border-radius: 12px 48px 24px 32px; }
+        
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 right-0 z-50 bg-[#fdf9ef] dark:bg-[#1c1c16] backdrop-blur-xl bg-opacity-90 border-b border-outline-variant/30">
+<div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tight text-[#17340e] dark:text-[#fdf9ef] font-headline" style="">
+                The True Cost of AI
+            </div>
+<div class="w-[120px] md:hidden"></div> <!-- Spacer for mobile symmetry if needed -->
+</div>
+</nav>
+<main class="pt-24 overflow-x-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[600px] flex items-center px-8 md:px-24 py-20">
+<div class="max-w-4xl z-10">
+<span class="font-label text-primary font-bold tracking-widest uppercase mb-4 block" style="">Environmental Audit...</span>
+<h1 class="font-headline text-6xl md:text-8xl text-primary leading-[1.1] mb-8" style="">
+                    The True <br/>
+<span class="text-secondary italic" style="">Cost of AI</span>
+</h1>
+<p class="font-body text-xl text-on-surface-variant max-w-2xl mb-12 leading-relaxed" style="">
+                    Explore the unseen cost of AI, and learn how to reduce your impact...</p>
+<div class="flex flex-wrap gap-4 md:gap-6 flex-row">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-full font-label font-bold text-lg hover:bg-primary-container transition-all shadow-xl shadow-primary/10" style="">
+                        See the Impact
+                    </button>
+<button class="bg-secondary-container text-on-secondary-container px-10 py-5 rounded-full font-label font-bold text-lg hover:brightness-95 transition-all" style="">
+                        Reduce Your Impact
+                    </button>
+<!-- New buttons moved from Nav -->
+<button class="bg-surface-container-high text-on-surface px-10 py-5 rounded-full font-label font-bold text-lg hover:bg-surface-variant transition-all border border-outline-variant/50" style="">
+                        Research Sources
+                    </button><button class="bg-surface-container-high text-on-surface px-10 py-5 rounded-full font-label font-bold text-lg hover:bg-surface-variant transition-all border border-outline-variant/50" style="">Methodology</button>
+</div>
+</div>
+</section>
+<!-- Environmental Footprint Section -->
+<section class="bg-surface-container-low py-32 px-8 md:px-24 relative">
+<div class="max-w-screen-2xl mx-auto">
+<div class="mb-20">
+<h2 class="font-headline text-4xl md:text-5xl text-primary mb-6" style="">Environmental Footprint</h2>
+<p class="font-label text-on-surface-variant uppercase tracking-wider" style="">Select an operation to measure the invisible resource drain</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Task Selector -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<button class="flex items-center justify-between p-6 bg-primary text-on-primary cut-paper-sm text-left transition-all active:scale-95" style="">
+<span class="font-headline text-xl" style="">Text Prompt</span>
+<span class="material-symbols-outlined" data-icon="short_text" style="">short_text</span>
+</button>
+<button class="flex items-center justify-between p-6 bg-surface-container text-on-surface cut-paper-sm text-left hover:bg-surface-container-high transition-all" style="">
+<span class="font-headline text-xl" style="">Image Generation</span>
+<span class="material-symbols-outlined" data-icon="image" style="">image</span>
+</button>
+<button class="flex items-center justify-between p-6 bg-surface-container text-on-surface cut-paper-sm text-left hover:bg-surface-container-high transition-all" style="">
+<span class="font-headline text-xl" style="">Model Training</span>
+<span class="material-symbols-outlined" data-icon="model_training" style="">model_training</span>
+</button>
+<button class="flex items-center justify-between p-6 bg-surface-container text-on-surface cut-paper-sm text-left hover:bg-surface-container-high transition-all" style="">
+<span class="font-headline text-xl" style="">Code Review</span>
+<span class="material-symbols-outlined" data-icon="terminal" style="">terminal</span>
+</button>
+</div>
+<!-- Data Display Bento -->
+<div class="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Electricity -->
+<div class="bg-surface-container-highest p-10 cut-paper-md shadow-sm transform -rotate-1 hover:rotate-0 transition-transform border border-outline-variant/30">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="bolt" style="">bolt</span>
+<span class="font-label font-bold text-primary tracking-tighter" style="">ELECTRICITY</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-7xl text-primary" style="">2.9</span>
+<span class="font-label text-2xl text-on-surface-variant" style="">Wh</span>
+</div>
+<p class="mt-6 text-on-surface-variant font-body leading-relaxed" style="">
+                                Equivalent to charging a modern smartphone to 25% capacity for a single five-word query.
+                            </p>
+</div>
+<!-- Water -->
+<div class="bg-[#e0f2f1] p-10 cut-paper-md shadow-sm transform rotate-1 hover:rotate-0 transition-transform border border-[#b2dfdb]">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="water_drop" style="">water_drop</span>
+<span class="font-label font-bold text-primary tracking-tighter" style="">WATER</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-7xl text-primary" style="">500</span>
+<span class="font-label text-2xl text-on-surface-variant" style="">ml</span>
+</div>
+<p class="mt-6 text-on-surface-variant font-body leading-relaxed" style="">
+                                Used primarily for data center cooling. Roughly equal to one standard plastic water bottle.
+                            </p>
+</div>
+<!-- Carbon -->
+<div class="md:col-span-2 bg-tertiary-container p-10 cut-paper-md shadow-sm transform -rotate-0.5 hover:rotate-0 transition-transform flex flex-col md:flex-row gap-10 items-center">
+<div class="flex-1">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl" data-icon="co2" style="">co2</span>
+<span class="font-label font-bold text-on-tertiary-container tracking-tighter uppercase" style="">Carbon Footprint</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline text-8xl text-on-tertiary-container" style="">0.4</span>
+<span class="font-label text-2xl text-on-tertiary-container" style="">gCO2</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest/40 backdrop-blur p-6 cut-paper-sm max-w-sm">
+<p class="text-on-tertiary-container font-body leading-relaxed" style="">
+                                    Generating just 1,000 words emits as much carbon as driving an average car for 0.1 miles.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Strategy for Sustainable Intelligence -->
+<section class="py-32 px-8 md:px-24">
+<div class="max-w-screen-2xl mx-auto">
+<div class="mb-20">
+<h2 class="font-headline text-4xl md:text-5xl text-primary mb-6" style="">Simple Steps to Reducing Impact</h2>
+<p class="font-label text-on-surface-variant uppercase tracking-wider" style="">Practical ways to use AI more sustainably without losing performance.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<!-- Quick Wins -->
+<div class="group bg-surface-container p-8 pt-16 cut-paper-sm relative hover:bg-surface-container-high transition-colors">
+<span class="absolute top-6 left-6 font-label text-xs font-bold text-secondary tracking-widest uppercase" style="">01</span>
+<h3 class="font-headline text-2xl text-primary mb-4" style="">Immediate Mitigation</h3>
+<p class="text-on-surface-variant font-body mb-8 text-sm leading-relaxed" style="">
+                            Immediate reduction begins with request optimization. Disabling auto-image generation and multi-modal previewing can reduce per-session energy consumption by up to 60%. Use specialized, smaller models (SLLMs) for task-specific queries rather than high-parameter foundational models which consume disproportionate resources for simple logical operations.
+                        </p>
+<div class="h-1 w-12 bg-secondary transition-all group-hover:w-full"></div>
+</div>
+<!-- Build Better Habits -->
+<div class="group bg-surface-container-high p-8 pt-16 cut-paper-md relative hover:bg-surface-container-highest transition-colors transform rotate-1">
+<span class="absolute top-6 left-6 font-label text-xs font-bold text-secondary tracking-widest uppercase" style="">02</span>
+<h3 class="font-headline text-2xl text-primary mb-4" style="">Asynchronous Batching</h3>
+<p class="text-on-surface-variant font-body mb-8 text-sm leading-relaxed" style="">
+                            Computational efficiency is maximized when server clusters operate at peak load rather than idling. By batching non-urgent requests for off-peak hours, users allow data centers to utilize renewable energy windows (solar peak) and improve Power Usage Effectiveness (PUE) ratios. Systematic batching reduces the overhead of constant context-switching at the hardware level.
+                        </p>
+<div class="h-1 w-12 bg-secondary transition-all group-hover:w-full"></div>
+</div>
+<!-- Go Local -->
+<div class="group bg-surface-container p-8 pt-16 cut-paper-sm relative hover:bg-surface-container-high transition-colors transform -rotate-1">
+<span class="absolute top-6 left-6 font-label text-xs font-bold text-secondary tracking-widest uppercase" style="">03</span>
+<h3 class="font-headline text-2xl text-primary mb-4" style="">Edge Infrastructure</h3>
+<p class="text-on-surface-variant font-body mb-8 text-sm leading-relaxed" style="">
+                            Decentralizing computation eliminates the 'Network Tax'—the energy required to move data across transcontinental fiber. Running quantized 7B or 13B parameter models locally on NPU-enabled hardware reduces total lifecycle carbon by bypassing the massive cooling infrastructure required for centralized hyperscalers. Local execution also ensures complete data sovereignty and zero transport latency.
+                        </p>
+<div class="h-1 w-12 bg-secondary transition-all group-hover:w-full"></div>
+</div>
+<!-- Think Bigger -->
+<div class="group bg-primary text-on-primary p-8 pt-16 cut-paper-md relative hover:brightness-110 transition-colors">
+<span class="absolute top-6 left-6 font-label text-xs font-bold text-secondary-container tracking-widest uppercase" style="">04</span>
+<h3 class="font-headline text-2xl mb-4" style="">Systemic Advocacy</h3>
+<p class="opacity-80 font-body mb-8 text-sm leading-relaxed" style="">
+                            Long-term sustainability requires a transition from voluntary disclosure to mandatory transparency. Corporate users should demand Water Utilization Effectiveness (WUE) reporting and 24/7 carbon-free energy matching. Support the development of 'Green AI' benchmarks that prioritize algorithmic efficiency over raw parameter count, incentivizing a shift toward sparse architectures and neuromorphic computing.
+                        </p>
+<div class="h-1 w-12 bg-secondary-container transition-all group-hover:w-full"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-12 py-16 flex flex-col md:flex-row justify-between items-center gap-8 bg-[#f1eee4] dark:bg-[#2d4b22] full-width rounded-t-[2rem] mt-20">
+<div class="flex flex-col gap-4 text-center md:text-left">
+<div class="text-lg font-bold text-[#17340e] dark:text-[#fec391] font-headline" style="">The True Cost of AI</div>
+<p class="font-manrope text-sm tracking-wide text-[#43483f] dark:text-[#e6e2d8] max-w-md" style="">
+                Estimated session average: <span class="font-bold text-primary dark:text-white" style="">12.4 Wh • 2.1L Water • 1.8g CO2</span>.
+                Sustainable intelligence starts with awareness and rigorous auditing.
+            </p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-label text-sm uppercase tracking-tighter">
+<a class="text-[#43483f] dark:text-[#e6e2d8] hover:text-[#17340e] dark:hover:text-[#fec391] transition-all" href="#" style="">Privacy Policy</a>
+<a class="text-[#43483f] dark:text-[#e6e2d8] hover:text-[#17340e] dark:hover:text-[#fec391] transition-all" href="#" style="">Data Sources</a>
+<a class="text-[#43483f] dark:text-[#e6e2d8] hover:text-[#17340e] dark:hover:text-[#fec391] transition-all" href="#" style="">Contact Specialist</a>
+</div>
+<div class="text-[#43483f] dark:text-[#e6e2d8] font-manrope text-xs opacity-80 hover:opacity-100 transition-all" style="">
+            © 2024 The True Cost of AI. Built for Sustainable Intelligence.
+        </div>
+</footer>
+</body></html>
