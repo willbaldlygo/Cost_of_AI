@@ -99,7 +99,7 @@ const taskData = {
       confidenceLabel: "Low confidence (±2–3×)"
     },
     comparisons: {
-      electricity: "Running a microwave on full power for about 30 minutes",
+      electricity: "Running a microwave on full power for 3 to 30 minutes",
       water: "Roughly a large bottle of water",
       carbon: "Driving a petrol car about 0.5 miles (800 metres)"
     }
