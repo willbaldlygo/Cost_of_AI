@@ -166,7 +166,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Powering approximately 500 UK homes for a year",
-      water: "About 4 Olympic swimming pools",
+      water: "About 4 Olympic swimming pools (enough to water a full-sized golf course for ~8 days)",
       carbon: "Approximately 450 return flights London to New York"
     }
   },
@@ -199,7 +199,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Powering approximately 5,700 UK homes for a year",
-      water: "About 43 Olympic swimming pools",
+      water: "About 43 Olympic swimming pools (enough to water a full-sized golf course for ~91 days)",
       carbon: "Annual emissions of a small town of about 3,000 people"
     }
   }
