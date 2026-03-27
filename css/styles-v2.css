@@ -1193,6 +1193,8 @@ a:hover { text-decoration: underline; }
     white-space: normal;
     width: auto;
   }
+
+  .section-title { font-size: 1.5rem; }
 }
 
 @media (max-width: 480px) {
@@ -1219,4 +1221,44 @@ a:hover { text-decoration: underline; }
   .section-title {
     font-size: 1.375rem;
   }
+
+  .container { padding: 0 var(--space-4); }
+
+  .metric-card__value { font-size: 1.5rem; }
+
+  .detail-panel { padding: var(--space-3); }
+
+  .modal {
+    padding: var(--space-4);
+  }
+
+  .modal__title { padding-right: var(--space-6); }
+
+  .tier__header  { padding: var(--space-3) var(--space-4); }
+  .tier__content { padding: 0 var(--space-4) var(--space-4); }
+
+  .hero__stat { max-width: 100%; }
+
+  .footer__cost-grid {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .footer__cost-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    min-width: 360px;
+  }
+
+  .confidence-badge__tooltip {
+    bottom: auto;
+    top: calc(100% + 8px);
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+}
+
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero { padding: var(--space-4) var(--space-4) var(--space-4); }
+  .hero__title { font-size: 1.5rem; }
 }
