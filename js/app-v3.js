@@ -87,8 +87,8 @@
       c.setAttribute('aria-selected', isActive ? 'true' : 'false');
     });
 
-    // Training banner
-    trainingBanner.classList.toggle('training-banner--visible', task.isTraining);
+    // Training banner (element is hidden by Tailwind's `hidden`; toggle that directly)
+    trainingBanner.classList.toggle('hidden', !task.isTraining);
 
     // Description
     descriptionEl.textContent = task.description;
@@ -228,6 +228,9 @@
   function renderSourcesModal() {
     var content = document.getElementById('sources-modal-content');
     var html = '';
+    if (typeof sourcesIntro === 'string' && sourcesIntro) {
+      html += '<p class="modal__intro">' + sourcesIntro + '</p>';
+    }
     sourcesData.forEach(function (group) {
       html += '<h3 class="modal__group-title">' + group.group + '</h3>';
       html += '<ol class="modal__source-list">';
@@ -277,6 +280,18 @@
       html += '<li>' + lim + '</li>';
     });
     html += '</ol>';
+
+    // Changelog — September 2026 update
+    if (methodologyData.changelog) {
+      var cl = methodologyData.changelog;
+      html += '<h3 class="modal__group-title">What changed — ' + cl.updated + '</h3>';
+      if (cl.intro) html += '<p class="modal__intro">' + cl.intro + '</p>';
+      html += '<ol class="limitations-list">';
+      cl.items.forEach(function (item) {
+        html += '<li>' + item + '</li>';
+      });
+      html += '</ol>';
+    }
 
     content.innerHTML = html;
   }
