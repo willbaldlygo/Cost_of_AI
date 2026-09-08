@@ -1,3 +1,7 @@
 .DS_Store
 Planning/
 .gemini/
+.vscode/
+
+# Large source artwork — the optimised web copy lives in assets/
+Planning_resources/impact-of-AI-hero.svg
