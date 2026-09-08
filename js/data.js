@@ -1,41 +1,75 @@
 /**
  * data.js — All research data for "The True Cost of AI"
- * Source: ai_environmental_impact_research.md & CLAUDE_CODE_BUILD_PROMPT.md
- * DO NOT modify these figures — they are research-sourced estimates.
+ * Sources: Planning_resources/ai_environmental_impact_research.md (March 2026 compilation)
+ *          Planning_resources/research_update_sept_2026.md (September 2026 revision)
+ * DO NOT modify these figures without a sourced basis — they are research-sourced estimates.
  */
 
 const taskData = {
   textPrompt: {
-    id: "text-prompt",
-    name: "Text Prompt",
+    id: "text-prompt-instant",
+    name: "Text Prompt (Instant)",
     icon: "💬",
-    description: "A typical workplace question generating a paragraph-length response (~500 tokens output) from a current-generation model like GPT-4o or Gemini.",
+    description: "A typical workplace question answered straight away with minimal \"thinking\" — the fast, low-effort setting most chatbots use by default (~300 output tokens). Bottom-up, production-conditions estimate from Microsoft Research (2025). Note: \"Instant\" and \"Reasoning\" are two points on a sliding scale of effort, not a hard on/off switch.",
     isTraining: false,
     electricity: {
-      central: 0.4,
+      central: 0.31,
       unit: "Wh",
-      range: "0.3–2.0 Wh",
+      range: "0.16–0.60 Wh",
       confidence: "high",
       confidenceLabel: "High confidence (±30%)"
     },
     water: {
-      central: 1,
+      central: 0.56,
       unit: "ml",
-      range: "0.5–3.5 ml",
+      range: "0.3–1.1 ml",
       confidence: "high",
       confidenceLabel: "High confidence (±30%)"
     },
     carbon: {
-      central: 0.16,
+      central: 0.12,
       unit: "g CO₂",
-      range: "0.12–0.78 g",
+      range: "0.06–0.23 g",
       confidence: "high",
       confidenceLabel: "High confidence (±30%)"
     },
     comparisons: {
-      electricity: "Running an LED light bulb for about 2–3 minutes",
-      water: "About 3–4 drops from an eyedropper",
-      carbon: "Driving a petrol car approximately 0.4 metres"
+      electricity: "Running an LED light bulb for about two minutes",
+      water: "A few drops from an eyedropper",
+      carbon: "Driving a petrol car roughly a third of a metre"
+    }
+  },
+  textPromptReasoning: {
+    id: "text-prompt-reasoning",
+    name: "Text Prompt (Reasoning)",
+    icon: "🧩",
+    description: "The same question with reasoning effort turned up — the model generates long hidden \"thinking\" steps before answering (~5,000 output tokens). At higher effort a single reply uses roughly 13× the energy of an instant one, and a significant share of such queries exceed 10 Wh. Most chatbots expose this as an effort level rather than a switch.",
+    isTraining: false,
+    electricity: {
+      central: 3.91,
+      unit: "Wh",
+      range: "2.15–7.05 Wh",
+      confidence: "high",
+      confidenceLabel: "High confidence (±30%)"
+    },
+    water: {
+      central: 7,
+      unit: "ml",
+      range: "3.9–12.7 ml",
+      confidence: "high",
+      confidenceLabel: "High confidence (±30%)"
+    },
+    carbon: {
+      central: 1.5,
+      unit: "g CO₂",
+      range: "0.8–2.7 g",
+      confidence: "high",
+      confidenceLabel: "High confidence (±30%)"
+    },
+    comparisons: {
+      electricity: "Running an LED light bulb for about 25 minutes",
+      water: "About one and a half teaspoons of water",
+      carbon: "Driving a petrol car about 4 metres"
     }
   },
   imageGeneration: {
@@ -75,57 +109,57 @@ const taskData = {
     id: "video-generation",
     name: "Video Generation (5s)",
     icon: "🎬",
-    description: "5 seconds of 1080p video from a text prompt, using a current-generation model like Sora 2 or Veo 2.",
+    description: "5 seconds of video from a text prompt on a standard commercial-grade (≈720p-class) model, directly measured in a validated 2026 framework (under 3% prediction error). Video generation is compute-bound: the GPU runs near full power regardless of model size, batching several clips saves nothing, and energy scales with resolution² × frame count — so longer or higher-resolution clips cost disproportionately more. Google Veo 3 is estimated at ~20–43 Wh for an 8-second 720p clip; full 1080p output from the largest commercial models can reach several hundred to over a thousand Wh.",
     isTraining: false,
     electricity: {
-      central: 470,
+      central: 85,
       unit: "Wh",
-      range: "50–500 Wh",
-      confidence: "low",
-      confidenceLabel: "Low confidence (±2–3×)"
+      range: "57.5–114.8 Wh",
+      confidence: "medium-high",
+      confidenceLabel: "Medium–High confidence (±40%)"
     },
     water: {
-      central: 850,
+      central: 153,
       unit: "ml",
-      range: "90–900 ml",
-      confidence: "low",
-      confidenceLabel: "Low confidence (±2–3×)"
+      range: "~105–207 ml",
+      confidence: "medium-high",
+      confidenceLabel: "Medium–High confidence (±40%)"
     },
     carbon: {
-      central: 183,
+      central: 33,
       unit: "g CO₂",
-      range: "20–195 g",
-      confidence: "low",
-      confidenceLabel: "Low confidence (±2–3×)"
+      range: "~22–45 g",
+      confidence: "medium-high",
+      confidenceLabel: "Medium–High confidence (±40%)"
     },
     comparisons: {
-      electricity: "Running a microwave on full power for 3 to 30 minutes",
-      water: "Roughly a large bottle of water",
-      carbon: "Driving a petrol car about 0.5 miles (800 metres)"
+      electricity: "Running a kitchen air fryer for up to five minutes",
+      water: "About a small glass of water",
+      carbon: "Driving a petrol car about 150 metres"
     }
   },
   deepResearch: {
     id: "deep-research",
     name: "Deep Research",
     icon: "🔬",
-    description: "An extended multi-step reasoning and web retrieval task, equivalent to approximately 20–30 sequential queries with chain-of-thought reasoning.",
+    description: "An extended multi-step reasoning and web-retrieval task, equivalent to roughly 20–30 sequential reasoning-mode steps with chain-of-thought. Built from the same \"thinking\" steps as a reasoning prompt, so it inherits their higher per-step cost.",
     isTraining: false,
     electricity: {
-      central: 20,
+      central: 22,
       unit: "Wh",
       range: "6–40 Wh",
       confidence: "medium",
       confidenceLabel: "Medium confidence (±50%)"
     },
     water: {
-      central: 36,
+      central: 40,
       unit: "ml",
       range: "11–72 ml",
       confidence: "medium",
       confidenceLabel: "Medium confidence (±50%)"
     },
     carbon: {
-      central: 7.8,
+      central: 8.6,
       unit: "g CO₂",
       range: "2.3–15.6 g",
       confidence: "medium",
@@ -166,7 +200,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Powering approximately 500 UK homes for a year",
-      water: "About 4 Olympic swimming pools (enough to water a full-sized golf course for ~8 days)",
+      water: "About 4 Olympic swimming pools (enough to water a full-sized golf course for ~3 days)",
       carbon: "Approximately 450 return flights London to New York"
     }
   },
@@ -174,33 +208,33 @@ const taskData = {
     id: "training-frontier",
     name: "Training: Frontier Model",
     icon: "🏗️",
-    description: "Pre-training a state-of-the-art frontier model like GPT-4 or GPT-5 class (200B+ active parameters, MoE architecture). This is a one-time cost.",
+    description: "Pre-training a current-generation frontier model (2026) with 200B+ active parameters and a mixture-of-experts architecture. This is a one-time cost, not a per-use cost. None of the major labs disclose exact figures, so this is the least certain estimate on the site.",
     isTraining: true,
     electricity: {
-      central: 60000,
+      central: 150000,
       unit: "MWh",
-      range: "50,000–72,000 MWh",
+      range: "100,000–300,000 MWh",
       confidence: "medium",
       confidenceLabel: "Medium confidence (±50%)"
     },
     water: {
-      central: 108,
+      central: 270,
       unit: "million litres",
-      range: "90–130 million litres",
+      range: "180–540 million litres",
       confidence: "medium",
       confidenceLabel: "Medium confidence (±50%)"
     },
     carbon: {
-      central: 23400,
+      central: 58500,
       unit: "tonnes CO₂",
-      range: "11,000–28,000 tonnes CO₂",
+      range: "39,000–117,000 tonnes CO₂",
       confidence: "medium",
       confidenceLabel: "Medium confidence (±50%)"
     },
     comparisons: {
-      electricity: "Powering approximately 5,700 UK homes for a year",
-      water: "About 43 Olympic swimming pools (enough to water a full-sized golf course for ~91 days)",
-      carbon: "Annual emissions of a small town of about 3,000 people"
+      electricity: "Powering approximately 14,200 UK homes for a year",
+      water: "About 108 Olympic swimming pools — enough to water a full-sized golf course for around 75 days",
+      carbon: "Approximately 12,500 return flights London to New York"
     }
   }
 };
@@ -208,6 +242,7 @@ const taskData = {
 /* Order of tasks in the selector */
 const taskOrder = [
   "textPrompt",
+  "textPromptReasoning",
   "imageGeneration",
   "videoGeneration",
   "deepResearch",
@@ -225,8 +260,8 @@ const adviceTiers = [
     tips: [
       {
         title: "Choose the right-sized model",
-        body: "Use smaller models (GPT-4o mini, Claude Haiku, Gemini Flash) for simple tasks. Reserve frontier models for complex reasoning. Choosing the right model can use up to 70× less energy per query.",
-        source: "Jegham et al., 2025"
+        body: "Use smaller models (GPT-4o mini, Claude Haiku, Gemini Flash) for simple tasks. Reserve frontier models for complex reasoning. Choosing the right model can use up to 70× less energy per query; combined model, serving and hardware choices plausibly deliver 8–20× reductions.",
+        source: "Jegham et al., 2025; Oviedo et al. (Microsoft), 2025"
       },
       {
         title: "Constrain your output",
@@ -235,8 +270,8 @@ const adviceTiers = [
       },
       {
         title: "Avoid unnecessary reasoning modes",
-        body: "Reasoning models generate hundreds of hidden \"thinking\" tokens. Only use them when you genuinely need multi-step problem-solving. Reasoning models average 543 thinking tokens per question vs. 37 for concise models.",
-        source: "Dauner & Socher, 2025"
+        body: "Reasoning models generate hundreds of hidden \"thinking\" tokens. Only use them when you genuinely need multi-step problem-solving. Reasoning models average 543 thinking tokens per question vs. 37 for concise models — and a single reasoning reply can use around 13× the energy of an instant one. Microsoft Research (2025) found that switching reasoning on only when needed can cut per-query energy 5× or more on its own.",
+        source: "Dauner & Socher, 2025; Oviedo et al. (Microsoft), 2025"
       }
     ]
   },
@@ -304,7 +339,7 @@ const adviceTiers = [
     tips: [
       {
         title: "Understand training costs",
-        body: "Training GPT-5 consumed ~60,000 MWh — equivalent to billions of queries. This is a fixed cost that users don't control, but understanding it puts per-query costs in perspective.",
+        body: "Training a current frontier model is estimated at ~150,000 MWh (100–300 GWh) — equivalent to billions of queries. This is a fixed cost that users don't control, but understanding it puts per-query costs in perspective.",
         source: null
       },
       {
@@ -327,7 +362,10 @@ const keyStatCallout = {
   source: "\"Small is Sufficient\" study, 2025"
 };
 
-/* Sources data — all 32 references grouped, with verified URLs */
+/* Intro note shown at the top of the Research Sources panel */
+const sourcesIntro = "Updated September 2026. This revision added new peer-reviewed measurement of AI inference and video-generation energy (sources 33–35) and changed several headline figures — see the Methodology panel for what moved and why.";
+
+/* Sources data — 35 references grouped, with verified URLs */
 const sourcesData = [
   {
     group: "Primary Academic Sources",
@@ -375,13 +413,21 @@ const sourcesData = [
       { num: 31, text: "Verdecchia et al. (2023). \"A Systematic Review of Green AI.\" WIREs", url: "https://doi.org/10.1002/widm.1507" },
       { num: 32, text: "ALT Community Blog (May 2025). \"Think before you prompt: ROCKS\"", url: "https://www.alt.ac.uk/news/all_news/think-before-you-prompt-rocks/" }
     ]
+  },
+  {
+    group: "September 2026 Update — New Sources",
+    items: [
+      { num: 33, text: "Oviedo, F. et al. (2025). \"Energy Use of AI Inference, Efficiency Pathways, and Test-Time Scaling.\" Microsoft. arXiv:2509.20241 — median 0.31 Wh per standard query (IQR 0.16–0.60), rising ~13× to 3.91 Wh for reasoning/test-time-scaling queries; non-production benchmarks overstate real use by 4–20×.", url: "https://arxiv.org/abs/2509.20241" },
+      { num: 34, text: "Jegham, N., Gamazaychikov, B., Luccioni, S. (2026). \"Lights, Camera, Carbon: Architectural Scaling Laws for Video Generation Energy Consumption.\" arXiv:2607.04553 — validated framework (<3% error); ~57–115 Wh for a standard 5-second clip.", url: "https://arxiv.org/abs/2607.04553" },
+      { num: 35, text: "Epoch AI (2025–26). \"How much power will frontier AI training demand in 2030?\" plus related 2026 frontier training-energy syntheses (GPT-5-class runs at 100–300 GWh).", url: "https://epoch.ai/blog/power-demands-of-frontier-ai-training" }
+    ]
   }
 ];
 
 /* Methodology data */
 const methodologyData = {
   referenceScenario: [
-    { label: "Models", value: "Current-generation (2025–26) flagship models (GPT-4o/GPT-5, Gemini 2.5, Claude, Llama 4)" },
+    { label: "Models", value: "Current-generation (2026) flagship models — OpenAI GPT-5.5, Google Gemini 3, Anthropic Opus 5 / Sonnet 5 generation; open-weight models such as Llama 4 / current Qwen. No provider publishes per-query figures for this generation, so estimates here rely on production-grade benchmarking studies rather than single blog estimates." },
     { label: "Hardware", value: "NVIDIA H100/B200 class GPU hardware" },
     { label: "Data centre PUE", value: "~1.2" },
     { label: "Water Usage Effectiveness", value: "~1.8 litres per kWh" },
@@ -389,15 +435,29 @@ const methodologyData = {
     { label: "Water accounting", value: "Includes Scope 1 (on-site cooling) and Scope 2 (electricity generation). Excludes Scope 3 (chip manufacturing)." }
   ],
   confidenceLevels: [
-    { level: "high", label: "High (±30%)", description: "Multiple independent sources converge" },
+    { level: "high", label: "High (±30%)", description: "Multiple independent sources converge, or a production-grade measurement" },
+    { level: "medium-high", label: "Medium–High (±40%)", description: "Directly measured, or a validated framework, with some architectural assumptions for proprietary models" },
     { level: "medium", label: "Medium (±50%)", description: "Credible third-party estimates with architectural assumptions" },
     { level: "low", label: "Low (±2–3×)", description: "Inferred from proxy data with significant uncertainty" }
   ],
   limitations: [
     "No provider publishes per-query energy data directly",
     "\"Average query\" conflates a wide range of task complexity",
+    "\"Instant\" vs \"reasoning\" text prompting is a sliding scale of effort, not a binary — energy per reply rises steeply as reasoning effort increases",
+    "Non-production benchmarks (small-batch, un-optimised) overstate real-world energy use by 4–20×, which is why published estimates vary so widely",
     "Water and carbon are highly location-dependent",
-    "Models are getting more efficient over time (snapshot, not permanent truth)",
+    "Models change fast: these figures are a snapshot, not a permanent truth — this September 2026 update revised video down ~5.5× and frontier training up ~2.5× in just six months",
     "Frontier model training estimates involve the most uncertainty"
-  ]
+  ],
+  changelog: {
+    updated: "September 2026",
+    intro: "Several figures changed meaningfully since the original March 2026 research. That is the site's core point in action — even careful estimates here have a short shelf life.",
+    items: [
+      "Text prompt: split into Instant (0.31 Wh) and Reasoning (3.91 Wh, ~13× higher), from new production-conditions measurement.",
+      "Video (5s): revised down from 470 Wh to 85 Wh, on a directly-measured 2026 framework.",
+      "Frontier training: revised up from 60,000 MWh to 150,000 MWh, reflecting a newer model generation.",
+      "Deep research: minor bump, 20 → 22 Wh.",
+      "Reference models updated to the 2026 frontier generation (GPT-5.5, Gemini 3, Opus 5 / Sonnet 5)."
+    ]
+  }
 };
