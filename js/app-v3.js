@@ -8,6 +8,7 @@
   /* ── DOM References ── */
   const taskSelectorEl = document.getElementById('task-selector');
   const descriptionEl = document.getElementById('task-description');
+  const evidenceEl = document.getElementById('task-evidence');
   const trainingBanner = document.getElementById('training-banner');
 
   // Metric value spans
@@ -92,11 +93,13 @@
 
     // Description
     descriptionEl.textContent = task.description;
+    // Guarded: a visitor's cached index.html may briefly predate this element
+    if (evidenceEl) evidenceEl.textContent = task.evidence;
 
     // Ranges
-    elecRange.textContent = 'Range: ' + task.electricity.range;
-    waterRange.textContent = 'Range: ' + task.water.range;
-    carbonRange.textContent = 'Range: ' + task.carbon.range;
+    elecRange.textContent = formatRange(task.electricity.range);
+    waterRange.textContent = formatRange(task.water.range);
+    carbonRange.textContent = formatRange(task.carbon.range);
 
     // Units
     elecUnit.textContent = task.electricity.unit;
@@ -126,6 +129,11 @@
     panel.classList.add('animate-in');
   }
 
+  /* A figure disclosed as a single value has no range to show */
+  function formatRange(range) {
+    return range ? 'Range: ' + range : '';
+  }
+
   function setConfidence(dot, tip, metric) {
     dot.className = 'confidence-dot confidence-dot--' + metric.confidence;
     tip.textContent = metric.confidenceLabel;
@@ -137,6 +145,11 @@
     var start = 0;
     var startTime = null;
 
+    // Only the newest animation on an element may write to it, so an older
+    // count-up can never leave the previous card's figure on screen
+    var animationId = (element.animationId || 0) + 1;
+    element.animationId = animationId;
+
     // Determine decimal places from target
     var decimals = 0;
     var str = String(target);
@@ -145,6 +158,7 @@
     }
 
     function step(timestamp) {
+      if (element.animationId !== animationId) return;
       if (!startTime) startTime = timestamp;
       var progress = Math.min((timestamp - startTime) / duration, 1);
       // Ease out cubic
@@ -249,17 +263,25 @@
     content.innerHTML = html;
   }
 
+  function renderLabelledTable(title, rows) {
+    var html = '<h3 class="modal__group-title">' + title + '</h3>';
+    html += '<table class="methodology-table">';
+    rows.forEach(function (row) {
+      html += '<tr><td>' + row.label + '</td><td>' + row.value + '</td></tr>';
+    });
+    return html + '</table>';
+  }
+
   function renderMethodologyModal() {
     var content = document.getElementById('methodology-modal-content');
     var html = '';
 
     // Reference Scenario
-    html += '<h3 class="modal__group-title">Reference Scenario</h3>';
-    html += '<table class="methodology-table">';
-    methodologyData.referenceScenario.forEach(function (row) {
-      html += '<tr><td>' + row.label + '</td><td>' + row.value + '</td></tr>';
-    });
-    html += '</table>';
+    html += renderLabelledTable('Reference Scenario', methodologyData.referenceScenario);
+
+    // Where each figure comes from, and the values behind the comparisons
+    html += renderLabelledTable('Where Each Figure Comes From', methodologyData.figureBasis);
+    html += renderLabelledTable('Everyday Comparison Values', methodologyData.conversions);
 
     // Confidence Levels
     html += '<h3 class="modal__group-title">Confidence Levels</h3>';
