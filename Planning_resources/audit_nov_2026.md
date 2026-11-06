@@ -1,0 +1,62 @@
+# Evidence Audit — November 2026
+
+## Purpose
+This records the audit of the Environmental Footprint section, the methodology and the source list. **It takes priority over the March compilation and the September update where they disagree.** Both of those documents contain errors listed here and are kept as a dated record.
+
+Rule for the site: every figure must come from a source listed on the page, or be calculated from one with a stated factor.
+
+## Figures
+
+| Card | Before | After | Basis |
+|---|---|---|---|
+| Text (Instant) | 0.31 Wh | Unchanged | Oviedo et al., *Joule* 2026 (confirmed on the journal page) |
+| Text (Reasoning) | 3.91 Wh | Unchanged | Same paper, arXiv v2, p.8 |
+| Image | 3 Wh (1–5) | 1.35 Wh (0.63–3.58) | Luccioni FAccT '24 median, p.6; MIT Technology Review SD3 Medium, 2,282 J; Iyengar et al. FAccT '26 |
+| Video | 177 Wh (114.8–215) | Unchanged | Jegham et al. preprint, pp.5 and 9 |
+| Deep Research | 22 Wh (6–40) | 158 Wh (23–348), Low | Kim et al., HPCA 2026, Table III: LATS on 70B, across 8B and 70B agents. GPU only |
+| Training 8B | 5,400 MWh, 9.7M L, 2,100 t | 910 MWh, 1.64M L, 390 t | Meta model card: 1.3M GPU hours × 700 W; 390 tCO₂eq |
+| Training Frontier | 150,000 MWh, 270M L, 58,500 t | 310,000 MWh, 754M L, 150,000 t, Low | Epoch AI Grok 4 estimate. Low end: GPT-4 at 50 GWh, MIT Technology Review |
+
+## Errors found
+
+- **Training 8B:** 5,400 MWh equals 7.7M GPU hours × 700 W, which is the 8B and 70B models combined. 2,290 tCO₂eq is also the combined total.
+- **Frontier range:** 100–300 GWh could not be traced to any source. The Epoch page cited for it gives power only.
+- **Deep Research:** 20–30 steps at 3.91 Wh gives 78–117 Wh, contradicting 22 Wh. The update doc's rise to 22 Wh relied on 4.32 Wh, a superseded figure.
+- **Text figures in the September update:** 0.34 and 4.32 Wh come from arXiv v1 (Sept 2025). The peer-reviewed version gives 0.31 and 3.91 Wh.
+- **Video:** 85 Wh appears nowhere in the paper. 57.5 Wh reproduces from Table 2 only at 81 frames, which is 3.3 seconds at that model's 24 fps.
+- **Water accounting:** the site said 1.8 L/kWh included electricity generation. It is an on-site figure.
+- **Confidence levels:** the ± percentages had no source. Tiers are now defined by evidence type.
+- **"No provider publishes per-query energy data":** false. Google and OpenAI have.
+
+## Comparison values
+
+| Value | Before (implied) | After | Source |
+|---|---|---|---|
+| UK home electricity | 10,500 kWh a year | 2,500 kWh | Ofgem medium value from 1 July 2026, via Energy UK |
+| Petrol car | 0.4 g/m on small cards | 0.16 g/m | 2026 UK factors, average petrol car, 0.16152 kg/km |
+| London–New York return | 4.68 t | ~1.3 t per passenger | 2026 UK factors, long-haul economy with RF, 0.11704 kg/passenger.km over ~11,080 km |
+| Full kettle | ~20 Wh | ~160 Wh | 1.7 L heated by 80°C |
+| Golf course | ~3.6M L a day | ~465,000 L a day | USGA: 2,312,701 acre-feet a year across 16,797 US facilities, 2003–05 |
+
+## Source list
+
+**Wrong page:** old 4 (cancer biology paper), old 16 (housing briefing), old 22 (computer vision paper).
+
+**Page did not support the citation:** old 12 (landing page), old 17 (EcoLogits calculator), old 18 (a different 2023 article).
+
+**Dead links, replaced:** old 9, 20, 24, 27, 28, 32.
+
+**Removed, no original found:** old 26 (XDA) and old 29 (Tilburg.ai).
+
+**Wrong details:** old 4 and old 23 authors.
+
+**Renumbering:** old 27–28 are now 26–27, old 31 is now 28, old 32 is now 29, old 30 is now 30, and old 33–35 are now 31–33. New sources are 34–39.
+
+## Not resolved
+
+- **Source 30 (Schwartz et al.):** ACM blocks automated access, so the page was not opened. The DOI resolves to the expected ACM address.
+- **Frontier figure:** one third-party estimate of one model.
+- **Deep Research:** a proxy. No study measures commercial tools.
+- **Commercial image and video models:** largely unmeasured.
+- **Footer self-audit:** the per-exchange energy assumptions are the site's own.
+- **What You Can Do tips:** not fully audited. The "543 thinking tokens vs 37" tip looks wrong: source 19 reports 37.7 as *response* tokens, not thinking tokens.

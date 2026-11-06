@@ -2,6 +2,7 @@
  * data.js — All research data for "The True Cost of AI"
  * Sources: Planning_resources/ai_environmental_impact_research.md (March 2026 compilation)
  *          Planning_resources/research_update_sept_2026.md (September 2026 revision)
+ *          Planning_resources/audit_nov_2026.md (November 2026 evidence audit: start here)
  * DO NOT modify these figures without a sourced basis — they are research-sourced estimates.
  */
 
@@ -10,33 +11,34 @@ const taskData = {
     id: "text-prompt-instant",
     name: "Text Prompt (Instant)",
     icon: "💬",
-    description: "A typical workplace question answered straight away with minimal \"thinking\" — the fast, low-effort setting most chatbots use by default (~300 output tokens). Bottom-up, production-conditions estimate from Microsoft Research (2025). Note: \"Instant\" and \"Reasoning\" are two points on a sliding scale of effort, not a hard on/off switch.",
+    description: "A typical workplace question answered straight away with minimal \"thinking\" — the fast, low-effort setting most chatbots use by default (~300 output tokens). Bottom-up, production-conditions estimate from Microsoft researchers, published in Joule (2026). Note: \"Instant\" and \"Reasoning\" are two points on a sliding scale of effort, not a hard on/off switch.",
+    evidence: "Based on source 31, which agrees with sources 7, 8 and 24",
     isTraining: false,
     electricity: {
       central: 0.31,
       unit: "Wh",
       range: "0.16–0.60 Wh",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     water: {
       central: 0.56,
       unit: "ml",
       range: "0.3–1.1 ml",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     carbon: {
       central: 0.12,
       unit: "g CO₂",
       range: "0.06–0.23 g",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     comparisons: {
       electricity: "Running an LED light bulb for about two minutes",
-      water: "A few drops from an eyedropper",
-      carbon: "Driving a petrol car roughly a third of a metre"
+      water: "About ten drops from an eyedropper",
+      carbon: "Driving a petrol car about three-quarters of a metre"
     }
   },
   textPromptReasoning: {
@@ -44,197 +46,203 @@ const taskData = {
     name: "Text Prompt (Reasoning)",
     icon: "🧩",
     description: "The same question with reasoning effort turned up — the model generates long hidden \"thinking\" steps before answering (~5,000 output tokens). At higher effort a single reply uses roughly 13× the energy of an instant one, and a significant share of such queries exceed 10 Wh. Most chatbots expose this as an effort level rather than a switch.",
+    evidence: "Based on source 31",
     isTraining: false,
     electricity: {
       central: 3.91,
       unit: "Wh",
       range: "2.15–7.05 Wh",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     water: {
       central: 7,
       unit: "ml",
       range: "3.9–12.7 ml",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     carbon: {
       central: 1.5,
       unit: "g CO₂",
       range: "0.8–2.7 g",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     comparisons: {
       electricity: "Running an LED light bulb for about 25 minutes",
       water: "About one and a half teaspoons of water",
-      carbon: "Driving a petrol car about 4 metres"
+      carbon: "Driving a petrol car about 9 metres"
     }
   },
   imageGeneration: {
     id: "image-generation",
     name: "Image Generation",
     icon: "🖼️",
-    description: "A single 1024×1024 pixel image from a text prompt, using a current-generation model like DALL-E 3, Imagen 3, or Midjourney V6.",
+    description: "A single image from a text prompt. The central figure is the median across the image models measured in a peer-reviewed 2024 study. More recent tests of 1024×1024 images run from 0.63 Wh (Stable Diffusion 3 Medium) to 3.58 Wh (a larger open model at high quality). These are open models: commercial image services publish no figures of their own.",
+    evidence: "Based on sources 2, 4 and 9",
     isTraining: false,
     electricity: {
-      central: 3,
+      central: 1.35,
       unit: "Wh",
-      range: "1.0–5.0 Wh",
+      range: "0.63–3.58 Wh",
       confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      confidenceLabel: "Medium confidence"
     },
     water: {
-      central: 5.4,
+      central: 2.4,
       unit: "ml",
-      range: "1.8–9.0 ml",
+      range: "1.1–6.4 ml",
       confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      confidenceLabel: "Medium confidence"
     },
     carbon: {
-      central: 1.2,
+      central: 0.53,
       unit: "g CO₂",
-      range: "0.39–1.95 g",
+      range: "0.25–1.4 g",
       confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      confidenceLabel: "Medium confidence"
     },
     comparisons: {
-      electricity: "Running a microwave for about 5–10 seconds",
-      water: "About a teaspoon of water",
-      carbon: "Driving a petrol car approximately 3 metres"
+      electricity: "Running a microwave for about 5 seconds",
+      water: "About half a teaspoon of water",
+      carbon: "Driving a petrol car about 3 metres"
     }
   },
   videoGeneration: {
     id: "video-generation",
     name: "Video Generation (5s)",
     icon: "🎬",
-    description: "5 seconds of 720p video from a text prompt, based on measurements of open-source models on NVIDIA H200 and B200 GPUs. These figures count GPU energy only, so the full data centre cost is higher. Video generation is compute-bound: the GPU runs near full power regardless of model size, and batching several clips saves nothing. Energy grows faster than clip length or resolution, so longer or sharper clips cost disproportionately more. Models vary about tenfold: Google Veo 3 is estimated at ~20–43 Wh for an 8-second 720p clip, while one top-tier commercial model was estimated at over 1,300 Wh for 12 seconds of 1080p.",
+    description: "5 seconds of 720p video from a text prompt, based on measurements of open-source models on NVIDIA H200 and B200 GPUs. These figures count GPU energy only, so the full data centre cost is higher. Video generation is compute-bound: the GPU runs near full power regardless of model size, and batching several clips saves nothing. Energy grows faster than clip length or resolution, so longer or sharper clips cost disproportionately more. Models vary about tenfold: Google Veo 3 is estimated at ~20–43 Wh for an 8-second 720p clip, while one top-tier commercial model was estimated at over 1,300 Wh for 12 seconds of 1080p. An older open model, CogVideoX, was reported at about 944 Wh for a 5-second clip.",
+    evidence: "Based on sources 32 and 9",
     isTraining: false,
     electricity: {
       central: 177,
       unit: "Wh",
       range: "114.8–215 Wh",
       confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      confidenceLabel: "Medium confidence"
     },
     water: {
       central: 319,
       unit: "ml",
       range: "207–387 ml",
       confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      confidenceLabel: "Medium confidence"
     },
     carbon: {
       central: 69,
       unit: "g CO₂",
       range: "45–84 g",
       confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      confidenceLabel: "Medium confidence"
     },
     comparisons: {
       electricity: "Running a kitchen air fryer for about 9 minutes",
       water: "Nearly a drinks can of water",
-      carbon: "Driving a petrol car about 270 metres"
+      carbon: "Driving a petrol car about 430 metres"
     }
   },
   deepResearch: {
     id: "deep-research",
     name: "Deep Research",
     icon: "🔬",
-    description: "An extended multi-step reasoning and web-retrieval task, equivalent to roughly 20–30 sequential reasoning-mode steps with chain-of-thought. Built from the same \"thinking\" steps as a reasoning prompt, so it inherits their higher per-step cost.",
+    description: "A multi-step task where an AI agent searches and reasons across many model calls. No study has measured commercial deep research tools, so this uses the closest published test: AI agents answering multi-step questions with search tools. The central figure is one agent on a 70-billion-parameter model, and the range spans the agents and model sizes tested. These figures count GPU energy only.",
+    evidence: "Based on source 35",
     isTraining: false,
     electricity: {
-      central: 22,
+      central: 158,
       unit: "Wh",
-      range: "6–40 Wh",
-      confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      range: "23–348 Wh",
+      confidence: "low",
+      confidenceLabel: "Low confidence"
     },
     water: {
-      central: 40,
+      central: 285,
       unit: "ml",
-      range: "11–72 ml",
-      confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      range: "41–627 ml",
+      confidence: "low",
+      confidenceLabel: "Low confidence"
     },
     carbon: {
-      central: 8.6,
+      central: 62,
       unit: "g CO₂",
-      range: "2.3–15.6 g",
-      confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      range: "9–136 g",
+      confidence: "low",
+      confidenceLabel: "Low confidence"
     },
     comparisons: {
       electricity: "Boiling a full kettle once",
-      water: "About 2 tablespoons of water",
-      carbon: "Driving a petrol car about 20 metres"
+      water: "About a mug of water",
+      carbon: "Driving a petrol car about 380 metres"
     }
   },
   training8B: {
     id: "training-8b",
     name: "Training: 8B Model",
     icon: "🧠",
-    description: "Pre-training an open-source LLM of ~8 billion parameters on ~15 trillion tokens (e.g., Meta's Llama 3 8B). This is a one-time cost, not a per-use cost.",
+    description: "Pre-training Meta's Llama 3 8B, an open model with about 8 billion parameters, on over 15 trillion tokens. Energy is calculated from the 1.3 million GPU hours Meta disclosed, at 700 W per GPU. The carbon figure is Meta's own, and Meta says it offset these emissions. This is a one-time cost, not a per-use cost.",
+    evidence: "Based on source 11",
     isTraining: true,
     electricity: {
-      central: 5400,
+      central: 910,
       unit: "MWh",
-      range: "3,000–5,400 MWh",
+      range: "",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     water: {
-      central: 9.7,
+      central: 1.64,
       unit: "million litres",
-      range: "~9.7 million litres",
+      range: "",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     carbon: {
-      central: 2100,
+      central: 390,
       unit: "tonnes CO₂",
-      range: "~2,100 tonnes CO₂",
+      range: "",
       confidence: "high",
-      confidenceLabel: "High confidence (±30%)"
+      confidenceLabel: "High confidence"
     },
     comparisons: {
-      electricity: "Powering approximately 500 UK homes for a year",
-      water: "About 4 Olympic swimming pools (enough to water a full-sized golf course for ~3 days)",
-      carbon: "Approximately 450 return flights London to New York"
+      electricity: "The yearly electricity of about 360 UK homes",
+      water: "About two-thirds of an Olympic swimming pool (about 3.5 days of water for an average US golf course)",
+      carbon: "About 300 passengers flying London to New York and back"
     }
   },
   trainingFrontier: {
     id: "training-frontier",
     name: "Training: Frontier Model",
     icon: "🏗️",
-    description: "Pre-training a current-generation frontier model (2026) with 200B+ active parameters and a mixture-of-experts architecture. This is a one-time cost, not a per-use cost. None of the major labs disclose exact figures, so this is the least certain estimate on the site.",
+    description: "Pre-training Grok 4, the frontier model with the most detailed public estimate. Epoch AI estimates about 310 GWh, built on vague public statements from xAI, so uncertainty is significant. Its water and carbon figures reflect the gas power used for this run, and the water includes what that power generation consumes. The low end of each range is GPT-4, estimated at 50 GWh. OpenAI, Google and Anthropic do not disclose these figures. This is a one-time cost, not a per-use cost.",
+    evidence: "Based on sources 34 and 9",
     isTraining: true,
     electricity: {
-      central: 150000,
+      central: 310000,
       unit: "MWh",
-      range: "100,000–300,000 MWh",
-      confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      range: "50,000–310,000 MWh",
+      confidence: "low",
+      confidenceLabel: "Low confidence"
     },
     water: {
-      central: 270,
+      central: 754,
       unit: "million litres",
-      range: "180–540 million litres",
-      confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      range: "90–754 million litres",
+      confidence: "low",
+      confidenceLabel: "Low confidence"
     },
     carbon: {
-      central: 58500,
+      central: 150000,
       unit: "tonnes CO₂",
-      range: "39,000–117,000 tonnes CO₂",
-      confidence: "medium",
-      confidenceLabel: "Medium confidence (±50%)"
+      range: "19,500–150,000 tonnes CO₂",
+      confidence: "low",
+      confidenceLabel: "Low confidence"
     },
     comparisons: {
-      electricity: "Powering approximately 14,200 UK homes for a year",
-      water: "About 108 Olympic swimming pools — enough to water a full-sized golf course for around 75 days",
-      carbon: "Approximately 12,500 return flights London to New York"
+      electricity: "The yearly electricity of about 124,000 UK homes",
+      water: "About 300 Olympic swimming pools (about 4.4 years of water for an average US golf course)",
+      carbon: "About 115,000 passengers flying London to New York and back"
     }
   }
 };
@@ -339,7 +347,7 @@ const adviceTiers = [
     tips: [
       {
         title: "Understand training costs",
-        body: "Training a current frontier model is estimated at ~150,000 MWh (100–300 GWh) — equivalent to billions of queries. This is a fixed cost that users don't control, but understanding it puts per-query costs in perspective.",
+        body: "Training a frontier model such as Grok 4 is estimated at about 310,000 MWh, the same energy as about a trillion typical prompts. This is a fixed cost that users don't control, but understanding it puts per-query costs in perspective.",
         source: null
       },
       {
@@ -363,9 +371,9 @@ const keyStatCallout = {
 };
 
 /* Intro note shown at the top of the Research Sources panel */
-const sourcesIntro = "Updated September 2026, with video figures corrected in November 2026. This revision added new research on AI inference, video generation and training energy (sources 33–35) and changed several headline figures. Source 34 is a preprint that has not yet been peer reviewed. See the Methodology panel for what moved and why.";
+const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–39. Most entries are peer-reviewed papers or institutional reports, but the list also includes journalism and blogs. Source 32 is a preprint that has not yet been peer reviewed. See the Methodology panel for what changed and why.";
 
-/* Sources data — 35 references grouped, with verified URLs */
+/* Sources data: 39 references. Links checked November 2026; source 30's publisher blocks automated checks. */
 const sourcesData = [
   {
     group: "Primary Academic Sources",
@@ -373,9 +381,9 @@ const sourcesData = [
       { num: 1, text: "Jegham et al. (2025). \"How Hungry is AI?\" arXiv:2505.09598", url: "https://arxiv.org/abs/2505.09598" },
       { num: 2, text: "Luccioni et al. (2024). \"Power Hungry Processing.\" ACM FAccT '24", url: "https://arxiv.org/abs/2311.16863" },
       { num: 3, text: "de Vries (2023). \"The growing energy footprint of artificial intelligence.\" Joule", url: "https://doi.org/10.1016/j.joule.2023.09.004" },
-      { num: 4, text: "Ruf et al. (2025). \"Energy Scaling Laws for Diffusion Models.\" arXiv", url: "https://arxiv.org/abs/2411.14588" },
+      { num: 4, text: "Iyengar, Han, Ruf et al. (2026). \"Energy Scaling Laws for Diffusion Models.\" ACM FAccT '26. arXiv:2511.17031", url: "https://arxiv.org/abs/2511.17031" },
       { num: 5, text: "Li et al. (2025). \"Making AI Less Thirsty.\" Communications of the ACM", url: "https://arxiv.org/abs/2304.03271" },
-      { num: 6, text: "Cottier & Rahman (2024). \"Rising Costs of Training Frontier AI Models.\" Epoch AI", url: "https://arxiv.org/abs/2405.21015" }
+      { num: 6, text: "Cottier et al. (2024). \"The rising costs of training frontier AI models.\" arXiv:2405.21015", url: "https://arxiv.org/abs/2405.21015" }
     ]
   },
   {
@@ -383,43 +391,52 @@ const sourcesData = [
     items: [
       { num: 7, text: "OpenAI / Sam Altman (June 2025). \"The Gentle Singularity\" blog post", url: "https://blog.samaltman.com/the-gentle-singularity" },
       { num: 8, text: "Epoch AI (Feb 2025). \"How much energy does ChatGPT use?\"", url: "https://epoch.ai/blog/how-much-energy-does-chatgpt-use" },
-      { num: 9, text: "MIT Technology Review (May 2025). \"We did the math on AI's energy footprint.\"", url: "https://www.technologyreview.com/2025/05/20/1116336/we-did-the-math-on-ais-energy-footprint-the-numbers-are-staggering/" },
+      { num: 9, text: "MIT Technology Review (May 2025). \"We did the math on AI's energy footprint.\"", url: "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/" },
       { num: 10, text: "International Energy Agency (2025). Electricity 2025", url: "https://www.iea.org/reports/electricity-2025" },
       { num: 11, text: "Meta (2024). Llama 3 Model Card & disclosures", url: "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md" },
-      { num: 12, text: "Schneider Electric (2025). AI energy consumption estimates", url: "https://www.se.com/ww/en/insights/sustainability/sustainability-research-institute/" },
+      { num: 12, text: "Schneider Electric (2024). \"Artificial Intelligence and Electricity: A System Dynamics Approach\"", url: "https://www.se.com/ww/en/download/document/TLA_System_Dynamics_Approach/" },
       { num: 13, text: "Luccioni & Hernandez-Garcia (2023). \"Counting Carbon.\" arXiv", url: "https://arxiv.org/abs/2302.08476" },
       { num: 14, text: "EESI (2025). \"Data Centers and Water Consumption\"", url: "https://www.eesi.org/articles/view/data-centers-and-water-consumption" },
       { num: 15, text: "Brookings Institution (Nov 2025). \"AI, data centers, and water\"", url: "https://www.brookings.edu/articles/ai-data-centers-and-water/" },
-      { num: 16, text: "UK Parliament POST (2025). \"Water use in AI and Data Centres\"", url: "https://post.parliament.uk/research-briefings/post-pn-0729/" },
-      { num: 17, text: "Hugging Face / Luccioni (2025). CogVideoX video generation measurements", url: "https://huggingface.co/spaces/genai-impact/ecologits-calculator" },
-      { num: 18, text: "IEEE Spectrum (2025). \"The Staggering Ecological Impacts of AI\"", url: "https://spectrum.ieee.org/ai-energy-consumption" }
+      { num: 16, text: "Kenny, R. (2025). \"Water use in AI and Data Centres.\" Report published on GOV.UK", url: "https://assets.publishing.service.gov.uk/media/688cb407dc6688ed50878367/Water_use_in_data_centre_and_AI_report.pdf" },
+      { num: 17, text: "Delavande, Pierrard & Luccioni (2025). \"Video Killed the Energy Budget.\" arXiv:2509.19222", url: "https://arxiv.org/abs/2509.19222" },
+      { num: 18, text: "IEEE Spectrum (Oct 2025). \"The Hidden Behemoth Behind Every AI Answer\"", url: "https://spectrum.ieee.org/ai-energy-use" }
     ]
   },
   {
     group: "Efficiency & Mitigation Sources",
     items: [
       { num: 19, text: "Dauner & Socher (2025). \"Energy costs of communicating with AI.\" Frontiers in Communication", url: "https://doi.org/10.3389/fcomm.2025.1572947" },
-      { num: 20, text: "Capgemini (2025). \"From Words to Watts.\"", url: "https://www.capgemini.com/insights/expert-perspectives/from-words-to-watts/" },
+      { num: 20, text: "Capgemini (Dec 2025). \"From words to watts: How prompting patterns shape AI's environmental impact\"", url: "https://www.capgemini.com/in-en/insights/expert-perspectives/from-words-to-watts-how-prompting-patterns-shape-ais-environmental-impact/" },
       { num: 21, text: "Adamska et al. (2025). \"Green Prompting.\" arXiv:2503.10666", url: "https://arxiv.org/abs/2503.10666" },
-      { num: 22, text: "Martino et al. (2025). \"Green Prompt Engineering.\" arXiv", url: "https://arxiv.org/abs/2503.04223" },
-      { num: 23, text: "Doiseau et al. (2025). \"Small Language Models are Sufficient.\" arXiv", url: "https://arxiv.org/abs/2510.01889" },
-      { num: 24, text: "Google (2025). \"Measuring the environmental impact of AI compute\"", url: "https://blog.google/technology/google-deepmind/measuring-the-environmental-impact-of-ai-compute-at-google/" },
+      { num: 22, text: "De Martino et al. (2025). \"Green Prompt Engineering.\" arXiv:2509.22320", url: "https://arxiv.org/abs/2509.22320" },
+      { num: 23, text: "da Silva Barros et al. (2025). \"Small is Sufficient: Reducing the World AI Energy Consumption Through Model Selection.\" arXiv:2510.01889", url: "https://arxiv.org/abs/2510.01889" },
+      { num: 24, text: "Google (Aug 2025). \"How much energy does Google's AI use? We did the math\"", url: "https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference" },
       { num: 25, text: "Rubei et al. (2025). \"Prompt engineering and energy consumption.\" arXiv:2501.05899", url: "https://arxiv.org/abs/2501.05899" },
-      { num: 26, text: "XDA (Feb 2026). \"I run local LLMs and can barely tell the difference\"", url: "https://www.xda-developers.com/i-run-local-llms-and-can-barely-tell-the-difference/" },
-      { num: 27, text: "Peiris (2025). \"How Much Energy Does Local AI Use?\"", url: "https://www.tomshardware.com/pc-components/cpus/how-much-energy-does-local-ai-use" },
-      { num: 28, text: "MIT News (Sep 2025). \"Responding to the climate impact of generative AI\"", url: "https://news.mit.edu/2025/responding-climate-impact-generative-ai-0916" },
-      { num: 29, text: "Tilburg.ai (2024). \"5 Practical Tips to Lower Your AI Carbon Footprint\"", url: "https://tilburg.ai/2024/06/reduce-ai-carbon-footprint/" },
-      { num: 30, text: "Schwartz et al. (2020). \"Green AI.\" Communications of the ACM", url: "https://doi.org/10.1145/3381831" },
-      { num: 31, text: "Verdecchia et al. (2023). \"A Systematic Review of Green AI.\" WIREs", url: "https://doi.org/10.1002/widm.1507" },
-      { num: 32, text: "ALT Community Blog (May 2025). \"Think before you prompt: ROCKS\"", url: "https://www.alt.ac.uk/news/all_news/think-before-you-prompt-rocks/" }
+      { num: 26, text: "Peiris (Feb 2026). \"How Much Energy Does Local AI Use?\"", url: "https://brianpeiris.github.io/how-much-energy-does-local-ai-use" },
+      { num: 27, text: "MIT News (Sep 2025). \"Responding to the climate impact of generative AI\"", url: "https://news.mit.edu/2025/responding-to-generative-ai-climate-impact-0930" },
+      { num: 28, text: "Verdecchia et al. (2023). \"A Systematic Review of Green AI.\" WIREs", url: "https://doi.org/10.1002/widm.1507" },
+      { num: 29, text: "ALT (May 2025). \"Think before you prompt: Reduce your AI carbon footprint with ROCKS\"", url: "https://altc.alt.ac.uk/blog/2025/05/think-before-you-prompt-reduce-your-ai-carbon-footprint-with-rocks/" },
+      { num: 30, text: "Schwartz et al. (2020). \"Green AI.\" Communications of the ACM", url: "https://doi.org/10.1145/3381831" }
     ]
   },
   {
-    group: "September 2026 Update — New Sources",
+    group: "September 2026 Update",
     items: [
-      { num: 33, text: "Oviedo, F. et al. (2025). \"Energy Use of AI Inference, Efficiency Pathways, and Test-Time Scaling.\" Microsoft. arXiv:2509.20241 — median 0.31 Wh per standard query (IQR 0.16–0.60), rising ~13× to 3.91 Wh for reasoning/test-time-scaling queries; non-production benchmarks overstate real use by 4–20×.", url: "https://arxiv.org/abs/2509.20241" },
-      { num: 34, text: "Jegham, N., Gamazaychikov, B., Luccioni, S. (2026). \"Lights, Camera, Carbon: Architectural Scaling Laws for Video Generation Energy Consumption.\" arXiv:2607.04553 — preprint, not yet peer reviewed. 114.8–215 Wh for a 5-second 720p clip across the models and GPUs used here, counting GPU energy only.", url: "https://arxiv.org/abs/2607.04553" },
-      { num: 35, text: "Epoch AI (2025–26). \"How much power will frontier AI training demand in 2030?\" plus related 2026 frontier training-energy syntheses (GPT-5-class runs at 100–300 GWh).", url: "https://epoch.ai/blog/power-demands-of-frontier-ai-training" }
+      { num: 31, text: "Oviedo, F. et al. (2026). \"Energy use of AI inference, efficiency pathways, and test-time scaling.\" Joule. Median 0.31 Wh per standard query (IQR 0.16–0.60), rising about 13× to 3.91 Wh for long reasoning queries (IQR 2.15–7.05).", url: "https://doi.org/10.1016/j.joule.2026.102430" },
+      { num: 32, text: "Jegham, N., Gamazaychikov, B., Luccioni, S. (2026). \"Lights, Camera, Carbon: Architectural Scaling Laws for Video Generation Energy Consumption.\" arXiv:2607.04553 — preprint, not yet peer reviewed. 114.8–215 Wh for a 5-second 720p clip across the models and GPUs used here, counting GPU energy only.", url: "https://arxiv.org/abs/2607.04553" },
+      { num: 33, text: "Epoch AI (2025). \"How much power will frontier AI training demand in 2030?\" The largest training runs now exceed 100 MW, with power demand growing about 2.2× a year.", url: "https://epoch.ai/blog/power-demands-of-frontier-ai-training" }
+    ]
+  },
+  {
+    group: "November 2026 Audit",
+    items: [
+      { num: 34, text: "Epoch AI (Sep 2025). \"What did it take to train Grok 4?\" About 310 GWh of electricity, about 750 million litres of water and about 150,000 tonnes of CO₂.", url: "https://epoch.ai/data-insights/grok-4-training-resources" },
+      { num: 35, text: "Kim, Shin, Chung & Rhu (2026). \"The Cost of Dynamic Reasoning: Demystifying AI Agents and Test-Time Scaling from an AI Infrastructure Perspective.\" HPCA 2026. arXiv:2506.04301", url: "https://arxiv.org/abs/2506.04301" },
+      { num: 36, text: "UK Department for Energy Security and Net Zero (2026). Greenhouse gas reporting: conversion factors 2026", url: "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026" },
+      { num: 37, text: "Energy UK (July 2026). \"Energy UK Explains: Typical Domestic Consumption Values\" (Ofgem values)", url: "https://www.energy-uk.org.uk/wp-content/uploads/2026/05/Energy-UK-Explains-Typical-Domestic-Consumption-Values.pdf" },
+      { num: 38, text: "Ember (2025). US Electricity 2025 special report. US power sector carbon intensity of 384 gCO₂/kWh in 2024.", url: "https://ember-energy.org/latest-insights/us-electricity-2025-special-report/insight-4-rising-demand-pushes-up-emissions-slight" },
+      { num: 39, text: "Lyman, G. / USGA (2012). \"How Much Water Does Golf Use and Where Does It Come From?\"", url: "https://rulesworkshops.usga.org/content/dam/usga/pdf/Water%20Resource%20Center/how-much-water-does-golf-use.pdf" }
     ]
   }
 ];
@@ -427,37 +444,61 @@ const sourcesData = [
 /* Methodology data */
 const methodologyData = {
   referenceScenario: [
-    { label: "Models", value: "Current-generation (2026) flagship models — OpenAI GPT-5.5, Google Gemini 3, Anthropic Opus 5 / Sonnet 5 generation; open-weight models such as Llama 4 / current Qwen. No provider publishes per-query figures for this generation, so estimates here rely on production-grade benchmarking studies rather than single blog estimates." },
-    { label: "Hardware", value: "NVIDIA H100/B200 class GPU hardware" },
-    { label: "Data centre PUE", value: "~1.2" },
-    { label: "Water Usage Effectiveness", value: "~1.8 litres per kWh" },
-    { label: "Grid carbon intensity", value: "US average ~0.39 kg CO₂/kWh" },
-    { label: "Water accounting", value: "Includes Scope 1 (on-site cooling) and Scope 2 (electricity generation). Excludes Scope 3 (chip manufacturing)." }
+    { label: "Models", value: "No figure here measures today's flagship models, such as GPT-5.5, Gemini 3 or Anthropic's Opus 5 and Sonnet 5, because their developers do not publish these numbers. The evidence comes from open models, published estimates and developer disclosures about earlier models." },
+    { label: "Hardware", value: "NVIDIA H100, H200 and B200 GPUs, plus older A100s in some image tests" },
+    { label: "Data centre PUE", value: "~1.2 where a source includes data centre overhead (sources 31 and 34). Video and Deep Research figures count GPU energy only." },
+    { label: "Water Usage Effectiveness", value: "~1.8 litres per kWh on-site (used by source 34; source 14 gives ~1.9)" },
+    { label: "Grid carbon intensity", value: "US average ~0.39 kg CO₂/kWh (source 38 gives 0.384 for 2024). Training cards use the carbon figures published by their sources." },
+    { label: "Water accounting", value: "Covers on-site cooling only, unless a card says otherwise. Source 14 puts the water used to generate the electricity at about 4.5 litres per kWh, so the full footprint could be more than three times higher. Chip manufacturing is excluded." }
+  ],
+  figureBasis: [
+    { label: "Text Prompt (Instant and Reasoning)", value: "Median figures from a peer-reviewed model of production inference (source 31). The Instant figure agrees with sources 7, 8 and 24." },
+    { label: "Image Generation", value: "Central figure: median from source 2. Range: 0.63 Wh (source 9) to 3.58 Wh (source 4)." },
+    { label: "Video Generation (5s)", value: "177 Wh and 215 Wh on H200 GPUs, and 114.8 Wh at the low end, all from source 32." },
+    { label: "Deep Research", value: "The closest published proxy, not a direct measurement: 158 Wh for one agent on a 70B model, with 23–348 Wh across agents and model sizes (source 35)." },
+    { label: "Training: 8B Model", value: "1.3 million GPU hours × 700 W = 910 MWh, and 390 tonnes CO₂e, from Meta (source 11). Water uses the on-site factor above." },
+    { label: "Training: Frontier Model", value: "Grok 4 estimates from source 34. The low end is GPT-4 at 50 GWh (source 9), with water and carbon calculated using the factors above." },
+    { label: "Other water and carbon figures", value: "Calculated from the electricity figure using the factors above." }
+  ],
+  conversions: [
+    { label: "UK home", value: "2,500 kWh of electricity a year: Ofgem's medium value from July 2026 (source 37)" },
+    { label: "Petrol car", value: "0.16 kg CO₂e per km: UK government 2026 factor for an average petrol car (source 36)" },
+    { label: "London–New York return flight", value: "About 1.3 tonnes CO₂e per economy passenger: UK government 2026 long-haul factor, including non-CO₂ warming (source 36), over about 11,000 km" },
+    { label: "Golf course", value: "About 465,000 litres a day: average US facility in 2003–05 (source 39)" },
+    { label: "Olympic swimming pool", value: "2.5 million litres (50 m × 25 m × 2 m)" },
+    { label: "Full kettle", value: "About 160 Wh: heating 1.7 litres of water by 80°C, before heat losses" },
+    { label: "Appliances", value: "LED bulb 9 W, microwave 1,000 W, air fryer 1,200 W (as used by source 32)" },
+    { label: "Small amounts of water", value: "Drop 0.05 ml, teaspoon 5 ml, mug 300 ml, drinks can 330 ml" }
   ],
   confidenceLevels: [
-    { level: "high", label: "High (±30%)", description: "Multiple independent sources converge, or a production-grade measurement" },
-    { level: "medium", label: "Medium (±50%)", description: "Credible third-party estimates with architectural assumptions" },
-    { level: "low", label: "Low (±2–3×)", description: "Inferred from proxy data with significant uncertainty" }
+    { level: "high", label: "High", description: "Published by the developer, or peer-reviewed research" },
+    { level: "medium", label: "Medium", description: "Mixed evidence, or a preprint that has not been peer reviewed" },
+    { level: "low", label: "Low", description: "A single estimate, or the closest available proxy" }
   ],
   limitations: [
-    "No provider publishes per-query energy data directly",
+    "Few providers publish per-query energy data. Google and OpenAI have shared single figures (sources 24 and 7), without enough detail to check them independently",
     "\"Average query\" conflates a wide range of task complexity",
     "\"Instant\" vs \"reasoning\" text prompting is a sliding scale of effort, not a binary — energy per reply rises steeply as reasoning effort increases",
     "Non-production benchmarks (small-batch, un-optimised) overstate real-world energy use by 4–20×, which is why published estimates vary so widely",
     "Water and carbon are highly location-dependent",
     "Models change fast: these figures are a snapshot, not a permanent truth — our 2026 updates changed several headline figures within months",
-    "Video figures count GPU energy only, so they understate the full data centre cost",
-    "Frontier model training estimates involve the most uncertainty"
+    "Video and Deep Research figures count GPU energy only, so they understate the full data centre cost",
+    "Image and video evidence comes mainly from open models, because commercial services publish little",
+    "Frontier training is the least certain figure here: one third-party estimate, with no disclosure from the major labs"
   ],
   changelog: {
-    updated: "September 2026",
-    intro: "Several figures changed meaningfully since the original March 2026 research. That is the site's core point in action — even careful estimates here have a short shelf life.",
+    updated: "2026",
+    intro: "Several figures changed meaningfully during 2026, some because research moved on and some because we found mistakes in our own work. That is the site's core point in action: even careful estimates here have a short shelf life.",
     items: [
-      "Text prompt: split into Instant (0.31 Wh) and Reasoning (3.91 Wh, ~13× higher), from new production-conditions measurement.",
-      "Video (5s): now 177 Wh for a 720p clip from open-source models, replacing 470 Wh for a 1080p clip. Part of that drop reflects the smaller task, not just better measurement. Corrected in November 2026 from an earlier 85 Wh.",
-      "Frontier training: revised up from 60,000 MWh to 150,000 MWh, reflecting a newer model generation.",
-      "Deep research: minor bump, 20 → 22 Wh.",
-      "Reference models updated to the 2026 frontier generation (GPT-5.5, Gemini 3, Opus 5 / Sonnet 5)."
+      "September: text prompts split into Instant (0.31 Wh) and Reasoning (3.91 Wh, about 13× higher), from new production-conditions research.",
+      "November: we audited every figure in the Environmental Footprint section against its sources, and made the corrections below.",
+      "Training 8B: 5,400 MWh became 910 MWh. The old figure covered two models, not one.",
+      "Training frontier: now 310,000 MWh, from Epoch AI's published Grok 4 estimate. Our earlier 150,000 MWh rested on a range we could not trace to a source.",
+      "Deep research: now 158 Wh, from a peer-reviewed study of AI agents. Our earlier 22 Wh had no direct source.",
+      "Image: 3 Wh became 1.35 Wh, the published median.",
+      "Video (5s): now 177 Wh for a 720p clip from open-source models, replacing 470 Wh for a 1080p clip. Part of that drop reflects the smaller task, not just better measurement.",
+      "Everyday comparisons were recalculated from sourced values, listed above.",
+      "Confidence levels are now defined by type of evidence. The old ± percentages had no source."
     ]
   }
 };
