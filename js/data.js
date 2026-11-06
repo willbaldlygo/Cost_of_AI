@@ -287,9 +287,9 @@ const adviceTiers = [
         source: null
       },
       {
-        title: "Create Custom GPTs or Gems",
-        body: "Pre-load your context, role, and formatting preferences into a custom assistant. This cuts input tokens by ~30–50% on every subsequent use.",
-        source: null
+        title: "Create your own skills",
+        body: "Package your context, role, and formatting preferences into a reusable skill. The AI loads its full instructions only when a task calls for them, so you stop re-explaining yourself without carrying that context into every chat.",
+        source: "Agent Skills specification, agentskills.io"
       },
       {
         title: "Batch your questions",
