@@ -109,33 +109,33 @@ const taskData = {
     id: "video-generation",
     name: "Video Generation (5s)",
     icon: "🎬",
-    description: "5 seconds of video from a text prompt on a standard commercial-grade (≈720p-class) model, directly measured in a validated 2026 framework (under 3% prediction error). Video generation is compute-bound: the GPU runs near full power regardless of model size, batching several clips saves nothing, and energy scales with resolution² × frame count — so longer or higher-resolution clips cost disproportionately more. Google Veo 3 is estimated at ~20–43 Wh for an 8-second 720p clip; full 1080p output from the largest commercial models can reach several hundred to over a thousand Wh.",
+    description: "5 seconds of 720p video from a text prompt, based on measurements of open-source models on NVIDIA H200 and B200 GPUs. These figures count GPU energy only, so the full data centre cost is higher. Video generation is compute-bound: the GPU runs near full power regardless of model size, and batching several clips saves nothing. Energy grows faster than clip length or resolution, so longer or sharper clips cost disproportionately more. Models vary about tenfold: Google Veo 3 is estimated at ~20–43 Wh for an 8-second 720p clip, while one top-tier commercial model was estimated at over 1,300 Wh for 12 seconds of 1080p.",
     isTraining: false,
     electricity: {
-      central: 85,
+      central: 177,
       unit: "Wh",
-      range: "57.5–114.8 Wh",
-      confidence: "medium-high",
-      confidenceLabel: "Medium–High confidence (±40%)"
+      range: "114.8–215 Wh",
+      confidence: "medium",
+      confidenceLabel: "Medium confidence (±50%)"
     },
     water: {
-      central: 153,
+      central: 319,
       unit: "ml",
-      range: "~105–207 ml",
-      confidence: "medium-high",
-      confidenceLabel: "Medium–High confidence (±40%)"
+      range: "207–387 ml",
+      confidence: "medium",
+      confidenceLabel: "Medium confidence (±50%)"
     },
     carbon: {
-      central: 33,
+      central: 69,
       unit: "g CO₂",
-      range: "~22–45 g",
-      confidence: "medium-high",
-      confidenceLabel: "Medium–High confidence (±40%)"
+      range: "45–84 g",
+      confidence: "medium",
+      confidenceLabel: "Medium confidence (±50%)"
     },
     comparisons: {
-      electricity: "Running a kitchen air fryer for up to five minutes",
-      water: "About a small glass of water",
-      carbon: "Driving a petrol car about 150 metres"
+      electricity: "Running a kitchen air fryer for about 9 minutes",
+      water: "Nearly a drinks can of water",
+      carbon: "Driving a petrol car about 270 metres"
     }
   },
   deepResearch: {
@@ -363,7 +363,7 @@ const keyStatCallout = {
 };
 
 /* Intro note shown at the top of the Research Sources panel */
-const sourcesIntro = "Updated September 2026. This revision added new peer-reviewed measurement of AI inference and video-generation energy (sources 33–35) and changed several headline figures — see the Methodology panel for what moved and why.";
+const sourcesIntro = "Updated September 2026, with video figures corrected in November 2026. This revision added new research on AI inference, video generation and training energy (sources 33–35) and changed several headline figures. Source 34 is a preprint that has not yet been peer reviewed. See the Methodology panel for what moved and why.";
 
 /* Sources data — 35 references grouped, with verified URLs */
 const sourcesData = [
@@ -418,7 +418,7 @@ const sourcesData = [
     group: "September 2026 Update — New Sources",
     items: [
       { num: 33, text: "Oviedo, F. et al. (2025). \"Energy Use of AI Inference, Efficiency Pathways, and Test-Time Scaling.\" Microsoft. arXiv:2509.20241 — median 0.31 Wh per standard query (IQR 0.16–0.60), rising ~13× to 3.91 Wh for reasoning/test-time-scaling queries; non-production benchmarks overstate real use by 4–20×.", url: "https://arxiv.org/abs/2509.20241" },
-      { num: 34, text: "Jegham, N., Gamazaychikov, B., Luccioni, S. (2026). \"Lights, Camera, Carbon: Architectural Scaling Laws for Video Generation Energy Consumption.\" arXiv:2607.04553 — validated framework (<3% error); ~57–115 Wh for a standard 5-second clip.", url: "https://arxiv.org/abs/2607.04553" },
+      { num: 34, text: "Jegham, N., Gamazaychikov, B., Luccioni, S. (2026). \"Lights, Camera, Carbon: Architectural Scaling Laws for Video Generation Energy Consumption.\" arXiv:2607.04553 — preprint, not yet peer reviewed. 114.8–215 Wh for a 5-second 720p clip across the models and GPUs used here, counting GPU energy only.", url: "https://arxiv.org/abs/2607.04553" },
       { num: 35, text: "Epoch AI (2025–26). \"How much power will frontier AI training demand in 2030?\" plus related 2026 frontier training-energy syntheses (GPT-5-class runs at 100–300 GWh).", url: "https://epoch.ai/blog/power-demands-of-frontier-ai-training" }
     ]
   }
@@ -436,7 +436,6 @@ const methodologyData = {
   ],
   confidenceLevels: [
     { level: "high", label: "High (±30%)", description: "Multiple independent sources converge, or a production-grade measurement" },
-    { level: "medium-high", label: "Medium–High (±40%)", description: "Directly measured, or a validated framework, with some architectural assumptions for proprietary models" },
     { level: "medium", label: "Medium (±50%)", description: "Credible third-party estimates with architectural assumptions" },
     { level: "low", label: "Low (±2–3×)", description: "Inferred from proxy data with significant uncertainty" }
   ],
@@ -446,7 +445,8 @@ const methodologyData = {
     "\"Instant\" vs \"reasoning\" text prompting is a sliding scale of effort, not a binary — energy per reply rises steeply as reasoning effort increases",
     "Non-production benchmarks (small-batch, un-optimised) overstate real-world energy use by 4–20×, which is why published estimates vary so widely",
     "Water and carbon are highly location-dependent",
-    "Models change fast: these figures are a snapshot, not a permanent truth — this September 2026 update revised video down ~5.5× and frontier training up ~2.5× in just six months",
+    "Models change fast: these figures are a snapshot, not a permanent truth — our 2026 updates changed several headline figures within months",
+    "Video figures count GPU energy only, so they understate the full data centre cost",
     "Frontier model training estimates involve the most uncertainty"
   ],
   changelog: {
@@ -454,7 +454,7 @@ const methodologyData = {
     intro: "Several figures changed meaningfully since the original March 2026 research. That is the site's core point in action — even careful estimates here have a short shelf life.",
     items: [
       "Text prompt: split into Instant (0.31 Wh) and Reasoning (3.91 Wh, ~13× higher), from new production-conditions measurement.",
-      "Video (5s): revised down from 470 Wh to 85 Wh, on a directly-measured 2026 framework.",
+      "Video (5s): now 177 Wh for a 720p clip from open-source models, replacing 470 Wh for a 1080p clip. Part of that drop reflects the smaller task, not just better measurement. Corrected in November 2026 from an earlier 85 Wh.",
       "Frontier training: revised up from 60,000 MWh to 150,000 MWh, reflecting a newer model generation.",
       "Deep research: minor bump, 20 → 22 Wh.",
       "Reference models updated to the 2026 frontier generation (GPT-5.5, Gemini 3, Opus 5 / Sonnet 5)."
