@@ -59,4 +59,26 @@ Rule for the site: every figure must come from a source listed on the page, or b
 - **Deep Research:** a proxy. No study measures commercial tools.
 - **Commercial image and video models:** largely unmeasured.
 - **Footer self-audit:** the per-exchange energy assumptions are the site's own.
-- **What You Can Do tips:** not fully audited. The "543 thinking tokens vs 37" tip looks wrong: source 19 reports 37.7 as *response* tokens, not thinking tokens.
+- **Batching questions:** no study has tested whether one combined prompt beats several separate turns. The tip says so.
+
+## What You Can Do
+
+Audited after the figures above. Sources 40–45 were added for this section.
+
+| Tip | Problem | Fix |
+|---|---|---|
+| Key stat | A modelled estimate shown in quote marks, though not a quotation | Labelled as modelled; quote marks removed; authors credited |
+| Right-sized model | "70×" is out of date; 8–20× is about providers, not user choice | "Over 65×" (Jegham v6); 8–20× moved to the efficiency tip |
+| Constrain output | "More than prompt length" isn't what the paper says | Reworded; Oviedo added: energy scales roughly with output tokens |
+| Reasoning modes | 37.7 is *response* tokens, not thinking tokens | Corrected, with the 4–6× emissions finding |
+| Save prompts | "3–5 wasted queries" had no source | Number removed |
+| Batch questions | No direct evidence | Reworded to say so |
+| Words | Date wrong | Capgemini, 2025 |
+| Run local models | Implied local is greener; "less than a gaming PC at idle" unreliable | Reframed around model size (Saad-Falcon et al.); 65 W from Apple |
+| Quantised models | Cited review not found; "60–80%" contradicted by newer work | Memory claim kept; energy savings described as uncertain |
+| Build scripts | "Milliwatts vs watts" unsourced and confused power with energy | Reworded |
+| Transparency | Hugging Face has shown real-time estimates since 2025 | Reworded as what we found |
+
+**Go Local evidence.** On identical models, local accelerators were at least 1.4× less efficient than cloud (Saad-Falcon et al.). Other studies point the same way for batched serving: Leitch (arXiv:2604.18566) and Guégain & Coignion (arXiv:2609.11940), both preprints. The saving comes from smaller models: 88.7% of single-turn queries answerable locally, about 64% less energy with an 80%-accurate router. Peiris's power and time figures work out to about 2–8 Wh per translation, which is a rough calculation and is not on the site.
+
+**Skills tip:** the old "30–50% fewer tokens" figure was removed earlier because it was estimated for Custom GPTs.

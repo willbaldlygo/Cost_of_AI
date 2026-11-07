@@ -232,7 +232,7 @@
   }
 
   function renderKeyStatCallout() {
-    keyStatQuote.textContent = '"' + keyStatCallout.quote + '"';
+    keyStatQuote.textContent = keyStatCallout.quote;
     keyStatSource.textContent = '— ' + keyStatCallout.source;
   }
 
