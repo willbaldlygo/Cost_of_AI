@@ -268,18 +268,18 @@ const adviceTiers = [
     tips: [
       {
         title: "Choose the right-sized model",
-        body: "Use smaller models (GPT-4o mini, Claude Haiku, Gemini Flash) for simple tasks. Reserve frontier models for complex reasoning. Choosing the right model can use up to 70× less energy per query; combined model, serving and hardware choices plausibly deliver 8–20× reductions.",
-        source: "Jegham et al., 2025; Oviedo et al. (Microsoft), 2025"
+        body: "Use smaller models, such as Claude Haiku or Gemini Flash, for simple tasks and reserve frontier models for complex reasoning. In one benchmark, the hungriest model used over 65× the energy of the most efficient on the same long prompt.",
+        source: "Jegham et al., 2025"
       },
       {
         title: "Constrain your output",
-        body: "Ask for \"under 200 words\" or \"bullet points only.\" Response length affects energy more than prompt length.",
-        source: "Green Prompting, Adamska et al., 2025"
+        body: "Ask for \"under 200 words\" or \"bullet points only.\" Response length is a major driver of energy use, and energy rises roughly in line with the tokens generated.",
+        source: "Adamska et al., 2025; Oviedo et al., 2026"
       },
       {
         title: "Avoid unnecessary reasoning modes",
-        body: "Reasoning models generate hundreds of hidden \"thinking\" tokens. Only use them when you genuinely need multi-step problem-solving. Reasoning models average 543 thinking tokens per question vs. 37 for concise models — and a single reasoning reply can use around 13× the energy of an instant one. Microsoft Research (2025) found that switching reasoning on only when needed can cut per-query energy 5× or more on its own.",
-        source: "Dauner & Socher, 2025; Oviedo et al. (Microsoft), 2025"
+        body: "Reasoning modes add hidden \"thinking\" tokens. In one multiple-choice test they added about 543 thinking tokens to answers that averaged about 38 tokens, and raised emissions 4–6×. A single reasoning reply can use around 13× the energy of an instant one, and Microsoft researchers estimate that switching reasoning on only when needed can cut per-query energy 5× or more.",
+        source: "Dauner & Socher, 2025; Oviedo et al., 2026"
       }
     ]
   },
@@ -291,23 +291,23 @@ const adviceTiers = [
     tips: [
       {
         title: "Save and reuse your best prompts",
-        body: "Every time you craft a prompt that works well, save it. Reusing refined prompts eliminates 3–5 wasted experimental queries per task.",
+        body: "Every time you craft a prompt that works well, save it. Reusing it avoids the trial and error that wastes queries.",
         source: null
       },
       {
         title: "Create your own skills",
         body: "Package your context, role, and formatting preferences into a reusable skill. The AI loads its full instructions only when a task calls for them, so you stop re-explaining yourself without carrying that context into every chat.",
-        source: "Agent Skills specification, agentskills.io"
+        source: "Agent Skills overview, agentskills.io"
       },
       {
         title: "Batch your questions",
-        body: "Combine related queries into one well-structured prompt rather than asking five separate questions. This reduces context-rebuilding overhead.",
+        body: "Combine related questions into one well-structured prompt rather than asking five separately. Each turn in a chat sends the conversation so far back to the model, so fewer turns should mean less repeated work, though no study has tested this directly.",
         source: null
       },
       {
         title: "Choose your words deliberately",
-        body: "Research shows \"justify\" and \"analyze\" trigger energy-intensive reasoning chains. \"List,\" \"summarise,\" and \"measure\" are more efficient.",
-        source: "Capgemini, 2026"
+        body: "One study found prompts using \"justify\" and \"analyze\" were highly energy-intensive, likely because of the depth of reasoning they ask for. It suggests verbs like \"summarise,\" \"list\" and \"measure\" instead.",
+        source: "Capgemini, 2025"
       }
     ]
   },
@@ -318,18 +318,18 @@ const adviceTiers = [
     icon: "💻",
     tips: [
       {
-        title: "Run local models with Ollama or LM Studio",
-        body: "A Mac Mini M4 peaks at ~65W during inference — less than a gaming PC at idle. Local inference has zero water footprint beyond your electricity and no data centre overhead.",
-        source: null
+        title: "Run small local models with Ollama or LM Studio",
+        body: "Local isn't automatically greener: on the same model, cloud hardware was at least 1.4× more efficient in one study. The saving comes from using a smaller model. That study found small local models could answer 88.7% of single-turn chat and reasoning queries, and routing them locally cut energy by about 64% compared with cloud-only use. A Mac mini M4 draws at most 65 W.",
+        source: "Saad-Falcon et al., 2025; Apple"
       },
       {
         title: "Use quantised models",
-        body: "4-bit quantisation reduces memory by 75% and cuts energy by 60–80% with only 1–5% accuracy loss.",
-        source: "Green AI systematic review, ScienceDirect, 2025"
+        body: "4-bit quantisation needs about 75% less memory than 16-bit, so larger models fit on smaller machines. Energy savings are less certain: they depend on the method and hardware, and some 4-bit methods use more energy.",
+        source: "Delavande et al., 2026; Basta, 2026"
       },
       {
         title: "Build scripts instead of repeating AI tasks",
-        body: "Use AI to help you write a Python script, then run the script locally. A script running on milliwatts replaces an AI query using watts.",
+        body: "Use AI to help you write a Python script, then run the script locally. For repeated tasks, the script replaces running a model every time.",
         source: null
       },
       {
@@ -348,17 +348,17 @@ const adviceTiers = [
       {
         title: "Understand training costs",
         body: "Training a frontier model such as Grok 4 is estimated at about 310,000 MWh, the same energy as about a trillion typical prompts. This is a fixed cost that users don't control, but understanding it puts per-query costs in perspective.",
-        source: null
+        source: "Epoch AI, 2025"
       },
       {
         title: "Advocate for transparency",
-        body: "No AI company provides real-time per-query environmental metrics. Supporting independent researchers and calling for disclosure is one of the most impactful things you can do.",
-        source: null
+        body: "We found no major AI company that shows you measured energy use for each message. Independent tools such as Hugging Face's Chat UI Energy can only estimate it. Supporting independent researchers and calling for disclosure is a practical way to help.",
+        source: "TechCrunch, 2025"
       },
       {
         title: "Efficiency is improving fast",
-        body: "Google achieved 33× energy reduction per Gemini prompt in 12 months. The industry can improve dramatically when motivated.",
-        source: "Google Cloud, Aug 2025"
+        body: "Google reported a 33× drop in energy per median Gemini prompt over 12 months. Microsoft researchers estimate further model, serving and hardware improvements could cut energy per query by 8–20×.",
+        source: "Google, 2025; Oviedo et al., 2026"
       }
     ]
   }
@@ -366,14 +366,14 @@ const adviceTiers = [
 
 /* Key stat callout */
 const keyStatCallout = {
-  quote: "Simply choosing the right-sized model for each task could reduce global AI energy consumption by 27.8% — saving 31.9 TWh per year. That's equivalent to the output of five nuclear power reactors.",
-  source: "\"Small is Sufficient\" study, 2025"
+  quote: "Simply choosing the right-sized model for each task could reduce global AI energy consumption by 27.8%, saving 31.9 TWh in 2025, in a modelled estimate. That's roughly the yearly output of five nuclear reactors.",
+  source: "da Silva Barros et al., \"Small is Sufficient\", 2025"
 };
 
 /* Intro note shown at the top of the Research Sources panel */
-const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–39. Most entries are peer-reviewed papers or institutional reports, but the list also includes journalism and blogs. Source 32 is a preprint that has not yet been peer reviewed. See the Methodology panel for what changed and why.";
+const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–45. Many entries are peer-reviewed papers or institutional reports, but the list also includes preprints, a thesis, journalism and blogs. Source 32, which the video figures rely on, has not yet been peer reviewed. See the Methodology panel for what changed and why.";
 
-/* Sources data: 39 references. Links checked November 2026; source 30's publisher blocks automated checks. */
+/* Sources data: 45 references. Links checked November 2026; source 30's publisher blocks automated checks. */
 const sourcesData = [
   {
     group: "Primary Academic Sources",
@@ -436,7 +436,13 @@ const sourcesData = [
       { num: 36, text: "UK Department for Energy Security and Net Zero (2026). Greenhouse gas reporting: conversion factors 2026", url: "https://www.gov.uk/government/publications/greenhouse-gas-reporting-conversion-factors-2026" },
       { num: 37, text: "Energy UK (July 2026). \"Energy UK Explains: Typical Domestic Consumption Values\" (Ofgem values)", url: "https://www.energy-uk.org.uk/wp-content/uploads/2026/05/Energy-UK-Explains-Typical-Domestic-Consumption-Values.pdf" },
       { num: 38, text: "Ember (2025). US Electricity 2025 special report. US power sector carbon intensity of 384 gCO₂/kWh in 2024.", url: "https://ember-energy.org/latest-insights/us-electricity-2025-special-report/insight-4-rising-demand-pushes-up-emissions-slight" },
-      { num: 39, text: "Lyman, G. / USGA (2012). \"How Much Water Does Golf Use and Where Does It Come From?\"", url: "https://rulesworkshops.usga.org/content/dam/usga/pdf/Water%20Resource%20Center/how-much-water-does-golf-use.pdf" }
+      { num: 39, text: "Lyman, G. / USGA (2012). \"How Much Water Does Golf Use and Where Does It Come From?\"", url: "https://rulesworkshops.usga.org/content/dam/usga/pdf/Water%20Resource%20Center/how-much-water-does-golf-use.pdf" },
+      { num: 40, text: "Saad-Falcon et al. (2025). \"Intelligence per Watt: Measuring Intelligence Efficiency of Local AI.\" arXiv:2511.07885", url: "https://arxiv.org/abs/2511.07885" },
+      { num: 41, text: "Delavande, Pierrard & Luccioni (2026). \"Understanding Efficiency: Quantization, Batching, and Serving Strategies in LLM Energy Use.\" arXiv:2601.22362 — preprint", url: "https://arxiv.org/abs/2601.22362" },
+      { num: 42, text: "Basta, P. (2026). \"Towards Green AI: Evaluating Energy Efficiency for Quantized LLM Inference.\" Master's thesis, University of Waterloo. arXiv:2610.17531", url: "https://arxiv.org/abs/2610.17531" },
+      { num: 43, text: "Agent Skills. \"Agent Skills Overview.\" agentskills.io", url: "https://agentskills.io/home" },
+      { num: 44, text: "Apple. \"Mac mini power consumption and thermal output (BTU) information\"", url: "https://support.apple.com/en-gb/103253" },
+      { num: 45, text: "TechCrunch (Apr 2025). \"This tool estimates how much electricity your chatbot messages consume\"", url: "https://techcrunch.com/2025/04/24/this-tool-estimates-how-much-electricity-your-chatbot-messages-consume/" }
     ]
   }
 ];
@@ -498,7 +504,8 @@ const methodologyData = {
       "Image: 3 Wh became 1.35 Wh, the published median.",
       "Video (5s): now 177 Wh for a 720p clip from open-source models, replacing 470 Wh for a 1080p clip. Part of that drop reflects the smaller task, not just better measurement.",
       "Everyday comparisons were recalculated from sourced values, listed above.",
-      "Confidence levels are now defined by type of evidence. The old ± percentages had no source."
+      "Confidence levels are now defined by type of evidence. The old ± percentages had no source.",
+      "What You Can Do: we audited every tip too. Several claims were corrected or removed, and the Go Local advice now says the saving comes from using smaller models, not from running locally in itself."
     ]
   }
 };
