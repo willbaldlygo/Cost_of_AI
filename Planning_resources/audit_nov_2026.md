@@ -82,3 +82,27 @@ Audited after the figures above. Sources 40–45 were added for this section.
 **Go Local evidence.** On identical models, local accelerators were at least 1.4× less efficient than cloud (Saad-Falcon et al.). Other studies point the same way for batched serving: Leitch (arXiv:2604.18566) and Guégain & Coignion (arXiv:2609.11940), both preprints. The saving comes from smaller models: 88.7% of single-turn queries answerable locally, about 64% less energy with an 80%-accurate router. Peiris's power and time figures work out to about 2–8 Wh per translation, which is a rough calculation and is not on the site.
 
 **Skills tip:** the old "30–50% fewer tokens" figure was removed earlier because it was estimated for Custom GPTs.
+
+## Wider evidence
+
+Added after the two audits, to cover what the card figures leave out. No card figure changed. Each claim was checked against the source's own text.
+
+| Source | Status | Supports |
+|---|---|---|
+| 10 IEA, Key Questions on Energy and AI (Apr 2026) | Institutional; replaces *Electricity 2025*, which no figure used | 485 TWh in 2025, up 17%; AI-focused data centres up 50%; ~950 TWh in 2030 (executive summary) |
+| 46 Mistral lifecycle assessment (Jul 2025) | Company study with Carbone 4 and ADEME, reviewed by Resilio and Hubblo; "a first approximation" | 1.14 g CO₂e, 45 ml, per 400-token reply, upstream included, users' devices excluded |
+| 47 Morrison et al., ICLR 2025 | Peer reviewed | Development ~50% of training impact; manufacturing 22 of 493 t CO₂e (~4.5%) |
+| 48 Schneider et al. (Google) | Preprint | Operational 70–90% of TPU lifetime emissions; manufacturing <25%, construction <5%; TPUs only |
+| 49 Elsworth et al. (Google) | Preprint | 0.24 Wh, 0.03 g CO₂e (market-based), 0.26 ml per median Gemini prompt, May 2025; 0.10 Wh on the narrower boundary |
+| 50 Luccioni, Strubell & Crawford, FAccT '25 | Peer reviewed | Efficiency gains "may paradoxically spur increased consumption"; argued, not measured |
+| 51 AI Energy Score v2 (Hugging Face blog) | Blog with data; prompts and hardware not stated | Reasoning on vs off: 154×, 514×, 697× GPU energy per 1k queries on three open models |
+| 52 Chung et al., "Where Do the Joules Go?" | Preprint | 26 kJ–1.16 MJ (~7–322 Wh) per video, five open models, minimum-energy settings on B200, GPU only |
+
+**Considered and left out:**
+- de Vries-Gao (*Patterns*, 2026): peer reviewed, but the full text could not be opened, so it was not clear what the water range covers.
+- Han et al. (health impacts, accepted by CACM): latest full text not read; press coverage repeats superseded figures.
+- Wang et al. (e-waste) and Xiao et al. (US AI servers): journal pages would not open.
+- UNU-INWEH report (2026): PDF too large to read; review status unknown.
+- Google 2026 Environmental Report: the 37% electricity rise was seen only in press coverage.
+- Microsoft FY25 data: verified (emissions ~25% up; water consumption 6,693 → 8,170 ML), but company-wide, not AI-specific.
+- UK Environmental Audit Committee data centre inquiry: no report yet.

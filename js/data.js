@@ -12,7 +12,7 @@ const taskData = {
     name: "Text Prompt (Instant)",
     icon: "💬",
     description: "A typical workplace question answered straight away with minimal \"thinking\" — the fast, low-effort setting most chatbots use by default (~300 output tokens). Bottom-up, production-conditions estimate from Microsoft researchers, published in Joule (2026). Note: \"Instant\" and \"Reasoning\" are two points on a sliding scale of effort, not a hard on/off switch.",
-    evidence: "Based on source 31, which agrees with sources 7, 8 and 24",
+    evidence: "Based on source 31, which agrees with sources 7, 8, 24 and 49",
     isTraining: false,
     electricity: {
       central: 0.31,
@@ -278,8 +278,8 @@ const adviceTiers = [
       },
       {
         title: "Avoid unnecessary reasoning modes",
-        body: "Reasoning modes add hidden \"thinking\" tokens. In one multiple-choice test they added about 543 thinking tokens to answers that averaged about 38 tokens, and raised emissions 4–6×. A single reasoning reply can use around 13× the energy of an instant one, and Microsoft researchers estimate that switching reasoning on only when needed can cut per-query energy 5× or more.",
-        source: "Dauner & Socher, 2025; Oviedo et al., 2026"
+        body: "Reasoning modes add hidden \"thinking\" tokens. In one multiple-choice test they added about 543 thinking tokens to answers that averaged about 38 tokens, and raised emissions 4–6×. A single reasoning reply can use around 13× the energy of an instant one, and Microsoft researchers estimate that switching reasoning on only when needed can cut per-query energy 5× or more. In a benchmark of three open models, switching reasoning on raised energy about 150–700×, so the gap varies widely by model.",
+        source: "Dauner & Socher, 2025; Oviedo et al., 2026; AI Energy Score, 2025"
       }
     ]
   },
@@ -357,8 +357,8 @@ const adviceTiers = [
       },
       {
         title: "Efficiency is improving fast",
-        body: "Google reported a 33× drop in energy per median Gemini prompt over 12 months. Microsoft researchers estimate further model, serving and hardware improvements could cut energy per query by 8–20×.",
-        source: "Google, 2025; Oviedo et al., 2026"
+        body: "Google reported a 33× drop in energy per median Gemini prompt over 12 months. Microsoft researchers estimate further model, serving and hardware improvements could cut energy per query by 8–20×. Total use is still rising: electricity use by AI-focused data centres grew about 50% in 2025, and efficiency gains can lead to more use overall.",
+        source: "Google, 2025; Oviedo et al., 2026; IEA, 2026; Luccioni, Strubell & Crawford, 2025"
       }
     ]
   }
@@ -371,9 +371,9 @@ const keyStatCallout = {
 };
 
 /* Intro note shown at the top of the Research Sources panel */
-const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–45. Many entries are peer-reviewed papers or institutional reports, but the list also includes preprints, a thesis, journalism and blogs. Source 32, which the video figures rely on, has not yet been peer reviewed. See the Methodology panel for what changed and why.";
+const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–52. Sources 46–52 cover what our figures leave out, such as hardware manufacturing and whole-lifecycle impacts. Many entries are peer-reviewed papers or institutional reports, but the list also includes preprints, a thesis, journalism and blogs. Source 32, which the video figures rely on, has not yet been peer reviewed. See the Methodology panel for what changed and why.";
 
-/* Sources data: 45 references. Links checked November 2026; source 30's publisher blocks automated checks. */
+/* Sources data: 52 references. Links checked November 2026; source 30's publisher blocks automated checks. */
 const sourcesData = [
   {
     group: "Primary Academic Sources",
@@ -392,7 +392,7 @@ const sourcesData = [
       { num: 7, text: "OpenAI / Sam Altman (June 2025). \"The Gentle Singularity\" blog post", url: "https://blog.samaltman.com/the-gentle-singularity" },
       { num: 8, text: "Epoch AI (Feb 2025). \"How much energy does ChatGPT use?\"", url: "https://epoch.ai/blog/how-much-energy-does-chatgpt-use" },
       { num: 9, text: "MIT Technology Review (May 2025). \"We did the math on AI's energy footprint.\"", url: "https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/" },
-      { num: 10, text: "International Energy Agency (2025). Electricity 2025", url: "https://www.iea.org/reports/electricity-2025" },
+      { num: 10, text: "International Energy Agency (Apr 2026). \"Key Questions on Energy and AI.\" Data centres used 485 TWh in 2025, up 17%, with AI-focused data centres up 50%; about 950 TWh projected for 2030.", url: "https://www.iea.org/reports/key-questions-on-energy-and-ai" },
       { num: 11, text: "Meta (2024). Llama 3 Model Card & disclosures", url: "https://github.com/meta-llama/llama3/blob/main/MODEL_CARD.md" },
       { num: 12, text: "Schneider Electric (2024). \"Artificial Intelligence and Electricity: A System Dynamics Approach\"", url: "https://www.se.com/ww/en/download/document/TLA_System_Dynamics_Approach/" },
       { num: 13, text: "Luccioni & Hernandez-Garcia (2023). \"Counting Carbon.\" arXiv", url: "https://arxiv.org/abs/2302.08476" },
@@ -444,6 +444,18 @@ const sourcesData = [
       { num: 44, text: "Apple. \"Mac mini power consumption and thermal output (BTU) information\"", url: "https://support.apple.com/en-gb/103253" },
       { num: 45, text: "TechCrunch (Apr 2025). \"This tool estimates how much electricity your chatbot messages consume\"", url: "https://techcrunch.com/2025/04/24/this-tool-estimates-how-much-electricity-your-chatbot-messages-consume/" }
     ]
+  },
+  {
+    group: "November 2026: Wider Evidence",
+    items: [
+      { num: 46, text: "Mistral AI (Jul 2025). \"Our contribution to a global environmental standard for AI.\" Lifecycle assessment of Mistral Large 2 with Carbone 4 and ADEME: 1.14 g CO₂e and 45 ml of water per 400-token reply.", url: "https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai" },
+      { num: 47, text: "Morrison, Na, Fernandez, Dettmers, Strubell & Dodge (2025). \"Holistically Evaluating the Environmental Impact of Creating Language Models.\" ICLR 2025. arXiv:2503.05804", url: "https://arxiv.org/abs/2503.05804" },
+      { num: 48, text: "Schneider, Xu, Benecke, Patterson, Huang, Ranganathan & Elsworth (2025). \"Life-Cycle Emissions of AI Hardware: A Cradle-To-Grave Approach and Generational Trends.\" arXiv:2502.01671 — preprint by Google authors", url: "https://arxiv.org/abs/2502.01671" },
+      { num: 49, text: "Elsworth et al. (2025). \"Measuring the environmental impact of delivering AI at Google Scale.\" arXiv:2508.15734 — preprint by Google authors. 0.24 Wh, 0.03 g CO₂e and 0.26 ml per median Gemini prompt, May 2025.", url: "https://arxiv.org/abs/2508.15734" },
+      { num: 50, text: "Luccioni, Strubell & Crawford (2025). \"From Efficiency Gains to Rebound Effects: The Problem of Jevons' Paradox in AI's Polarized Environmental Debate.\" ACM FAccT '25. arXiv:2501.16548", url: "https://arxiv.org/abs/2501.16548" },
+      { num: 51, text: "Luccioni & Gamazaychikov (Dec 2025). \"AI Energy Score v2: Refreshed Leaderboard, now with Reasoning.\" Hugging Face blog", url: "https://huggingface.co/blog/sasha/ai-energy-score-v2" },
+      { num: 52, text: "Chung, Wu, Ma & Chowdhury (2026). \"Where Do the Joules Go? Diagnosing Inference Energy Consumption.\" arXiv:2601.22076 — preprint", url: "https://arxiv.org/abs/2601.22076" }
+    ]
   }
 ];
 
@@ -458,13 +470,20 @@ const methodologyData = {
     { label: "Water accounting", value: "Covers on-site cooling only, unless a card says otherwise. Source 14 puts the water used to generate the electricity at about 4.5 litres per kWh, so the full footprint could be more than three times higher. Chip manufacturing is excluded." }
   ],
   figureBasis: [
-    { label: "Text Prompt (Instant and Reasoning)", value: "Median figures from a peer-reviewed model of production inference (source 31). The Instant figure agrees with sources 7, 8 and 24." },
+    { label: "Text Prompt (Instant and Reasoning)", value: "Median figures from a peer-reviewed model of production inference (source 31). The Instant figure agrees with sources 7, 8, 24 and 49." },
     { label: "Image Generation", value: "Central figure: median from source 2. Range: 0.63 Wh (source 9) to 3.58 Wh (source 4)." },
-    { label: "Video Generation (5s)", value: "177 Wh and 215 Wh on H200 GPUs, and 114.8 Wh at the low end, all from source 32." },
+    { label: "Video Generation (5s)", value: "177 Wh and 215 Wh on H200 GPUs, and 114.8 Wh at the low end, all from source 32. An independent benchmark measured about 7–322 Wh per video across five open models at their most efficient settings, counting GPU energy only (source 52)." },
     { label: "Deep Research", value: "The closest published proxy, not a direct measurement: 158 Wh for one agent on a 70B model, with 23–348 Wh across agents and model sizes (source 35)." },
     { label: "Training: 8B Model", value: "1.3 million GPU hours × 700 W = 910 MWh, and 390 tonnes CO₂e, from Meta (source 11). Water uses the on-site factor above." },
     { label: "Training: Frontier Model", value: "Grok 4 estimates from source 34. The low end is GPT-4 at 50 GWh (source 9), with water and carbon calculated using the factors above." },
     { label: "Other water and carbon figures", value: "Calculated from the electricity figure using the factors above." }
+  ],
+  leftOut: [
+    { label: "Hardware manufacturing", value: "No card includes making the chips, servers or buildings. For Google's TPUs this was 10–30% of lifetime emissions (source 48). One study of open models put manufacturing at about 5% of its total (source 47)." },
+    { label: "Experiments before training", value: "In the only study we found that measured it, development runs added about 50% to the impact of the final training runs (source 47). The training cards don't include them." },
+    { label: "Whole lifecycle", value: "Mistral's lifecycle study, which counts upstream impacts such as server manufacturing, gives 1.14 g CO₂e and 45 ml of water per 400-token reply (source 46). That is higher than our Instant card, but the model, reply length and method all differ." },
+    { label: "The whole sector", value: "Data centres used 485 TWh of electricity in 2025, and the IEA expects about 950 TWh by 2030 (source 10). Use by AI-focused data centres grew about 50% in 2025." },
+    { label: "Efficiency and total use", value: "Cheaper, more efficient AI can lead to more use, so gains per query may not cut the total (source 50). This is a risk researchers argue for, not something measured yet." }
   ],
   conversions: [
     { label: "UK home", value: "2,500 kWh of electricity a year: Ofgem's medium value from July 2026 (source 37)" },
@@ -482,7 +501,7 @@ const methodologyData = {
     { level: "low", label: "Low", description: "A single estimate, or the closest available proxy" }
   ],
   limitations: [
-    "Few providers publish per-query energy data. Google and OpenAI have shared single figures (sources 24 and 7), without enough detail to check them independently",
+    "Few providers publish per-query energy data. Google has published how it measures (source 49), but the underlying data are internal. OpenAI has shared a single figure (source 7)",
     "\"Average query\" conflates a wide range of task complexity",
     "\"Instant\" vs \"reasoning\" text prompting is a sliding scale of effort, not a binary — energy per reply rises steeply as reasoning effort increases",
     "Non-production benchmarks (small-batch, un-optimised) overstate real-world energy use by 4–20×, which is why published estimates vary so widely",
@@ -505,7 +524,8 @@ const methodologyData = {
       "Video (5s): now 177 Wh for a 720p clip from open-source models, replacing 470 Wh for a 1080p clip. Part of that drop reflects the smaller task, not just better measurement.",
       "Everyday comparisons were recalculated from sourced values, listed above.",
       "Confidence levels are now defined by type of evidence. The old ± percentages had no source.",
-      "What You Can Do: we audited every tip too. Several claims were corrected or removed, and the Go Local advice now says the saving comes from using smaller models, not from running locally in itself."
+      "What You Can Do: we audited every tip too. Several claims were corrected or removed, and the Go Local advice now says the saving comes from using smaller models, not from running locally in itself.",
+      "Wider evidence: we added sources on what our figures leave out, including hardware manufacturing, development runs, whole-lifecycle studies, sector totals and rebound effects, and replaced source 10. No card figures changed."
     ]
   }
 };

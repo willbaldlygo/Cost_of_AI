@@ -281,6 +281,7 @@
 
     // Where each figure comes from, and the values behind the comparisons
     html += renderLabelledTable('Where Each Figure Comes From', methodologyData.figureBasis);
+    html += renderLabelledTable('What These Figures Leave Out', methodologyData.leftOut);
     html += renderLabelledTable('Everyday Comparison Values', methodologyData.conversions);
 
     // Confidence Levels
