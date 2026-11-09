@@ -278,6 +278,7 @@
 
     // Reference Scenario
     html += renderLabelledTable('Reference Scenario', methodologyData.referenceScenario);
+    html += renderLabelledTable('On-Site Water: Who Produced Each Figure', methodologyData.waterEvidence);
 
     // Where each figure comes from, and the values behind the comparisons
     html += renderLabelledTable('Where Each Figure Comes From', methodologyData.figureBasis);

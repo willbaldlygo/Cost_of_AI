@@ -107,4 +107,35 @@ Added after the two audits, to cover what the card figures leave out. No card fi
 - Microsoft FY25 data: verified (emissions ~25% up; water consumption 6,693 → 8,170 ML), but company-wide, not AI-specific.
 - UK Environmental Audit Committee data centre inquiry: no report yet.
 
-**Open question from de Vries-Gao (not acted on):** company reports give a weighted average of 0.59 L of on-site water per kWh (IEA implied WUE 0.56; Google 1.04). The site's on-site factor is 1.8 L/kWh (sources 34 and 14), roughly two to three times higher. The paper also finds generation water of 3.4–4.5 L/kWh, against the 4.5 L/kWh the site cites from source 14.
+## Water factor
+
+**Trace of the old 1.8 L/kWh:** Epoch AI (source 34) cites a data-centre software vendor's glossary; EESI (source 14) gives 1.9 from an undated trade guide. No primary source.
+
+**On-site evidence (L/kWh):**
+
+| Source | Value | Who produced it |
+|---|---|---|
+| Berkeley Lab 2024 report (source 54) | 66 billion L / 176 TWh = ~0.37 per facility kWh; modelled WUE "just over 0.36"; hyperscale median 0.32 | Independent model, calibrated to industry-reported values |
+| IEA, via de Vries-Gao (source 53) | 140 billion L / 360 TWh = ~0.39 per facility kWh; 0.56 per IT kWh | Independent, proprietary data; not opened directly |
+| Li et al. (source 5) | 0.55 US average | "as reported by Microsoft" |
+| Jegham et al. (source 1) | Azure 0.30, AWS 0.18 | Company reports |
+| de Vries-Gao (source 53) | Google ~1.04; company weighted average 0.59 | Company reports |
+
+**Decisions (Will, Nov 2026):**
+- Cards count on-site water only. Power-station water (Berkeley Lab: 4.52 L/kWh for US data centres in 2023) is explained in Methodology, not added. It varies widely by grid (1.3–9.5 across Microsoft sites in Li et al.), includes hydro-reservoir evaporation from multi-purpose reservoirs, and carbon already measures electricity's main impact.
+- Central factor 0.4 L/kWh (Berkeley Lab). Ranges span low energy × 0.2 to high energy × 1.0, to cover reported values from AWS 0.18 to Google 1.04, because none is independently audited.
+- A Methodology table shows who produced each figure. No separate company and independent averages: the independent estimates are calibrated to industry data, there are only two, their scope differs, and the company-reported values are higher, not lower.
+
+**Changes:**
+
+| Card | Old water | New water | New range |
+|---|---|---|---|
+| Instant | 0.56 ml | 0.12 ml | 0.03–0.6 ml |
+| Reasoning | 7 ml | 1.6 ml | 0.4–7 ml |
+| Image | 2.4 ml | 0.54 ml | 0.13–3.6 ml |
+| Video (5s) | 319 ml | 71 ml | 23–215 ml |
+| Deep Research | 285 ml | 63 ml | 5–348 ml |
+| Training 8B | 1.64 million L | 364,000 L | 182,000–910,000 L |
+| Training frontier | 754 million L (Epoch, incl. gas-generation water) | 124 million L (on-site only) | 10–310 million L |
+
+The footer self-audit total fell from about 587 ml to about 130 ml.
