@@ -371,9 +371,9 @@ const keyStatCallout = {
 };
 
 /* Intro note shown at the top of the Research Sources panel */
-const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–52. Sources 46–52 cover what our figures leave out, such as hardware manufacturing and whole-lifecycle impacts. Many entries are peer-reviewed papers or institutional reports, but the list also includes preprints, a thesis, journalism and blogs. Source 32, which the video figures rely on, has not yet been peer reviewed. See the Methodology panel for what changed and why.";
+const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–53. Sources 46–53 cover what our figures leave out, such as hardware manufacturing and whole-lifecycle impacts. Many entries are peer-reviewed papers or institutional reports, but the list also includes preprints, a thesis, journalism and blogs. Source 32, which the video figures rely on, has not yet been peer reviewed. See the Methodology panel for what changed and why.";
 
-/* Sources data: 52 references. Links checked November 2026; source 30's publisher blocks automated checks. */
+/* Sources data: 53 references. Links checked November 2026; source 30's publisher blocks automated checks. */
 const sourcesData = [
   {
     group: "Primary Academic Sources",
@@ -454,7 +454,8 @@ const sourcesData = [
       { num: 49, text: "Elsworth et al. (2025). \"Measuring the environmental impact of delivering AI at Google Scale.\" arXiv:2508.15734 — preprint by Google authors. 0.24 Wh, 0.03 g CO₂e and 0.26 ml per median Gemini prompt, May 2025.", url: "https://arxiv.org/abs/2508.15734" },
       { num: 50, text: "Luccioni, Strubell & Crawford (2025). \"From Efficiency Gains to Rebound Effects: The Problem of Jevons' Paradox in AI's Polarized Environmental Debate.\" ACM FAccT '25. arXiv:2501.16548", url: "https://arxiv.org/abs/2501.16548" },
       { num: 51, text: "Luccioni & Gamazaychikov (Dec 2025). \"AI Energy Score v2: Refreshed Leaderboard, now with Reasoning.\" Hugging Face blog", url: "https://huggingface.co/blog/sasha/ai-energy-score-v2" },
-      { num: 52, text: "Chung, Wu, Ma & Chowdhury (2026). \"Where Do the Joules Go? Diagnosing Inference Energy Consumption.\" arXiv:2601.22076 — preprint", url: "https://arxiv.org/abs/2601.22076" }
+      { num: 52, text: "Chung, Wu, Ma & Chowdhury (2026). \"Where Do the Joules Go? Diagnosing Inference Energy Consumption.\" arXiv:2601.22076 — preprint", url: "https://arxiv.org/abs/2601.22076" },
+      { num: 53, text: "de Vries-Gao, A. (2026). \"The carbon and water footprints of data centers and what this could mean for artificial intelligence.\" Patterns 7, 101430 (Perspective). AI systems in 2025: 32.6–79.7 million tonnes of CO₂ and 312.5–764.6 billion litres of water, from operation only.", url: "https://doi.org/10.1016/j.patter.2025.101430" }
     ]
   }
 ];
@@ -482,7 +483,7 @@ const methodologyData = {
     { label: "Hardware manufacturing", value: "No card includes making the chips, servers or buildings. For Google's TPUs this was 10–30% of lifetime emissions (source 48). One study of open models put manufacturing at about 5% of its total (source 47)." },
     { label: "Experiments before training", value: "In the only study we found that measured it, development runs added about 50% to the impact of the final training runs (source 47). The training cards don't include them." },
     { label: "Whole lifecycle", value: "Mistral's lifecycle study, which counts upstream impacts such as server manufacturing, gives 1.14 g CO₂e and 45 ml of water per 400-token reply (source 46). That is higher than our Instant card, but the model, reply length and method all differ." },
-    { label: "The whole sector", value: "Data centres used 485 TWh of electricity in 2025, and the IEA expects about 950 TWh by 2030 (source 10). Use by AI-focused data centres grew about 50% in 2025." },
+    { label: "The whole sector", value: "Data centres used 485 TWh of electricity in 2025, and the IEA expects about 950 TWh by 2030 (source 10). Use by AI-focused data centres grew about 50% in 2025. One estimate puts AI's 2025 operating footprint at 32.6–79.7 million tonnes of CO₂ and 312.5–764.6 billion litres of water, including water used to generate the electricity (source 53). It relies on company-wide averages, because no operator reports AI separately." },
     { label: "Efficiency and total use", value: "Cheaper, more efficient AI can lead to more use, so gains per query may not cut the total (source 50). This is a risk researchers argue for, not something measured yet." }
   ],
   conversions: [
