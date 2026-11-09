@@ -13,7 +13,7 @@ Just open `index.html` in your browser. No server required.
 
 ## Data Sources
 
-All figures are compiled from 52 research and institutional sources (last audited November 2026). See the "Research Sources" panel on the site for the full reference list, the "Methodology" panel for where each figure comes from, and `Planning_resources/audit_nov_2026.md` for the audit.
+All figures are compiled from 53 research and institutional sources (last audited November 2026). See the "Research Sources" panel on the site for the full reference list, the "Methodology" panel for where each figure comes from, and `Planning_resources/audit_nov_2026.md` for the audit.
 
 ## Credits
 

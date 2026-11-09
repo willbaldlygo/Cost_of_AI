@@ -97,12 +97,14 @@ Added after the two audits, to cover what the card figures leave out. No card fi
 | 50 Luccioni, Strubell & Crawford, FAccT '25 | Peer reviewed | Efficiency gains "may paradoxically spur increased consumption"; argued, not measured |
 | 51 AI Energy Score v2 (Hugging Face blog) | Blog with data; prompts and hardware not stated | Reasoning on vs off: 154×, 514×, 697× GPU energy per 1k queries on three open models |
 | 52 Chung et al., "Where Do the Joules Go?" | Preprint | 26 kJ–1.16 MJ (~7–322 Wh) per video, five open models, minimum-energy settings on B200, GPU only |
+| 53 de Vries-Gao, *Patterns* 2026 (Perspective; author declares no competing interests) | Peer-reviewed journal | AI in 2025: 32.6–79.7 Mt CO₂ and 312.5–764.6 billion L. Operational only. Carbon applies the IEA's implied 395.65 g/kWh to AI power demand of 9.4 GW (end 2024) to 23 GW (end 2025), from the author's own Joule 2025 paper. Water counts on-site cooling plus water used to generate the electricity, at ~3.40 L/kWh indirect (Meta, Apple, Google US sites). Read in full from the PDF Will supplied |
 
 **Considered and left out:**
-- de Vries-Gao (*Patterns*, 2026): peer reviewed, but the full text could not be opened, so it was not clear what the water range covers.
 - Han et al. (health impacts, accepted by CACM): latest full text not read; press coverage repeats superseded figures.
 - Wang et al. (e-waste) and Xiao et al. (US AI servers): journal pages would not open.
 - UNU-INWEH report (2026): PDF too large to read; review status unknown.
 - Google 2026 Environmental Report: the 37% electricity rise was seen only in press coverage.
 - Microsoft FY25 data: verified (emissions ~25% up; water consumption 6,693 → 8,170 ML), but company-wide, not AI-specific.
 - UK Environmental Audit Committee data centre inquiry: no report yet.
+
+**Open question from de Vries-Gao (not acted on):** company reports give a weighted average of 0.59 L of on-site water per kWh (IEA implied WUE 0.56; Google 1.04). The site's on-site factor is 1.8 L/kWh (sources 34 and 14), roughly two to three times higher. The paper also finds generation water of 3.4–4.5 L/kWh, against the 4.5 L/kWh the site cites from source 14.
