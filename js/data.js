@@ -22,9 +22,9 @@ const taskData = {
       confidenceLabel: "High confidence"
     },
     water: {
-      central: 0.56,
+      central: 0.12,
       unit: "ml",
-      range: "0.3–1.1 ml",
+      range: "0.03–0.6 ml",
       confidence: "high",
       confidenceLabel: "High confidence"
     },
@@ -37,7 +37,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Running an LED light bulb for about two minutes",
-      water: "About ten drops from an eyedropper",
+      water: "About two or three drops from an eyedropper",
       carbon: "Driving a petrol car about three-quarters of a metre"
     }
   },
@@ -56,9 +56,9 @@ const taskData = {
       confidenceLabel: "High confidence"
     },
     water: {
-      central: 7,
+      central: 1.6,
       unit: "ml",
-      range: "3.9–12.7 ml",
+      range: "0.4–7 ml",
       confidence: "high",
       confidenceLabel: "High confidence"
     },
@@ -71,7 +71,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Running an LED light bulb for about 25 minutes",
-      water: "About one and a half teaspoons of water",
+      water: "About a third of a teaspoon of water",
       carbon: "Driving a petrol car about 9 metres"
     }
   },
@@ -90,9 +90,9 @@ const taskData = {
       confidenceLabel: "Medium confidence"
     },
     water: {
-      central: 2.4,
+      central: 0.54,
       unit: "ml",
-      range: "1.1–6.4 ml",
+      range: "0.13–3.6 ml",
       confidence: "medium",
       confidenceLabel: "Medium confidence"
     },
@@ -105,7 +105,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Running a microwave for about 5 seconds",
-      water: "About half a teaspoon of water",
+      water: "About ten drops from an eyedropper",
       carbon: "Driving a petrol car about 3 metres"
     }
   },
@@ -124,9 +124,9 @@ const taskData = {
       confidenceLabel: "Medium confidence"
     },
     water: {
-      central: 319,
+      central: 71,
       unit: "ml",
-      range: "207–387 ml",
+      range: "23–215 ml",
       confidence: "medium",
       confidenceLabel: "Medium confidence"
     },
@@ -139,7 +139,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Running a kitchen air fryer for about 9 minutes",
-      water: "Nearly a drinks can of water",
+      water: "About a quarter of a mug of water",
       carbon: "Driving a petrol car about 430 metres"
     }
   },
@@ -158,9 +158,9 @@ const taskData = {
       confidenceLabel: "Low confidence"
     },
     water: {
-      central: 285,
+      central: 63,
       unit: "ml",
-      range: "41–627 ml",
+      range: "5–348 ml",
       confidence: "low",
       confidenceLabel: "Low confidence"
     },
@@ -173,7 +173,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "Boiling a full kettle once",
-      water: "About a mug of water",
+      water: "About a fifth of a mug of water",
       carbon: "Driving a petrol car about 380 metres"
     }
   },
@@ -192,9 +192,9 @@ const taskData = {
       confidenceLabel: "High confidence"
     },
     water: {
-      central: 1.64,
-      unit: "million litres",
-      range: "",
+      central: 364000,
+      unit: "litres",
+      range: "182,000–910,000 litres",
       confidence: "high",
       confidenceLabel: "High confidence"
     },
@@ -207,7 +207,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "The yearly electricity of about 360 UK homes",
-      water: "About two-thirds of an Olympic swimming pool (about 3.5 days of water for an average US golf course)",
+      water: "About a seventh of an Olympic swimming pool (under a day of water for an average US golf course)",
       carbon: "About 300 passengers flying London to New York and back"
     }
   },
@@ -215,7 +215,7 @@ const taskData = {
     id: "training-frontier",
     name: "Training: Frontier Model",
     icon: "🏗️",
-    description: "Pre-training Grok 4, the frontier model with the most detailed public estimate. Epoch AI estimates about 310 GWh, built on vague public statements from xAI, so uncertainty is significant. Its water and carbon figures reflect the gas power used for this run, and the water includes what that power generation consumes. The low end of each range is GPT-4, estimated at 50 GWh. OpenAI, Google and Anthropic do not disclose these figures. This is a one-time cost, not a per-use cost.",
+    description: "Pre-training Grok 4, the frontier model with the most detailed public estimate. Epoch AI estimates about 310 GWh, built on vague public statements from xAI, so uncertainty is significant. Its carbon figure reflects the gas power used for this run. Its water figure counts on-site cooling only, like the other cards. The low end of each range is GPT-4, estimated at 50 GWh. OpenAI, Google and Anthropic do not disclose these figures. This is a one-time cost, not a per-use cost.",
     evidence: "Based on sources 34 and 9",
     isTraining: true,
     electricity: {
@@ -226,9 +226,9 @@ const taskData = {
       confidenceLabel: "Low confidence"
     },
     water: {
-      central: 754,
+      central: 124,
       unit: "million litres",
-      range: "90–754 million litres",
+      range: "10–310 million litres",
       confidence: "low",
       confidenceLabel: "Low confidence"
     },
@@ -241,7 +241,7 @@ const taskData = {
     },
     comparisons: {
       electricity: "The yearly electricity of about 124,000 UK homes",
-      water: "About 300 Olympic swimming pools (about 4.4 years of water for an average US golf course)",
+      water: "About 50 Olympic swimming pools (about nine months of water for an average US golf course)",
       carbon: "About 115,000 passengers flying London to New York and back"
     }
   }
@@ -371,9 +371,9 @@ const keyStatCallout = {
 };
 
 /* Intro note shown at the top of the Research Sources panel */
-const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–53. Sources 46–53 cover what our figures leave out, such as hardware manufacturing and whole-lifecycle impacts. Many entries are peer-reviewed papers or institutional reports, but the list also includes preprints, a thesis, journalism and blogs. Source 32, which the video figures rely on, has not yet been peer reviewed. See the Methodology panel for what changed and why.";
+const sourcesIntro = "Updated November 2026 after an evidence audit. We corrected wrong and dead links, removed two sources we could no longer find, and added sources 34–54. Sources 46–54 cover what our figures leave out, such as hardware manufacturing and whole-lifecycle impacts. Many entries are peer-reviewed papers or institutional reports, but the list also includes preprints, a thesis, journalism and blogs. Source 32, which the video figures rely on, has not yet been peer reviewed. See the Methodology panel for what changed and why.";
 
-/* Sources data: 53 references. Links checked November 2026; source 30's publisher blocks automated checks. */
+/* Sources data: 54 references. Links checked November 2026; source 30's publisher blocks automated checks. */
 const sourcesData = [
   {
     group: "Primary Academic Sources",
@@ -455,7 +455,8 @@ const sourcesData = [
       { num: 50, text: "Luccioni, Strubell & Crawford (2025). \"From Efficiency Gains to Rebound Effects: The Problem of Jevons' Paradox in AI's Polarized Environmental Debate.\" ACM FAccT '25. arXiv:2501.16548", url: "https://arxiv.org/abs/2501.16548" },
       { num: 51, text: "Luccioni & Gamazaychikov (Dec 2025). \"AI Energy Score v2: Refreshed Leaderboard, now with Reasoning.\" Hugging Face blog", url: "https://huggingface.co/blog/sasha/ai-energy-score-v2" },
       { num: 52, text: "Chung, Wu, Ma & Chowdhury (2026). \"Where Do the Joules Go? Diagnosing Inference Energy Consumption.\" arXiv:2601.22076 — preprint", url: "https://arxiv.org/abs/2601.22076" },
-      { num: 53, text: "de Vries-Gao, A. (2026). \"The carbon and water footprints of data centers and what this could mean for artificial intelligence.\" Patterns 7, 101430 (Perspective). AI systems in 2025: 32.6–79.7 million tonnes of CO₂ and 312.5–764.6 billion litres of water, from operation only.", url: "https://doi.org/10.1016/j.patter.2025.101430" }
+      { num: 53, text: "de Vries-Gao, A. (2026). \"The carbon and water footprints of data centers and what this could mean for artificial intelligence.\" Patterns 7, 101430 (Perspective). AI systems in 2025: 32.6–79.7 million tonnes of CO₂ and 312.5–764.6 billion litres of water, from operation only.", url: "https://doi.org/10.1016/j.patter.2025.101430" },
+      { num: 54, text: "Shehabi et al. / Lawrence Berkeley National Laboratory (Dec 2024). \"2024 United States Data Center Energy Usage Report.\" LBNL-2001637. US data centres used 176 TWh in 2023 and consumed 66 billion litres of water on-site.", url: "https://eta-publications.lbl.gov/publications/2024-lbnl-data-center-energy-usage-report" }
     ]
   }
 ];
@@ -466,9 +467,19 @@ const methodologyData = {
     { label: "Models", value: "No figure here measures today's flagship models, such as GPT-5.5, Gemini 3 or Anthropic's Opus 5 and Sonnet 5, because their developers do not publish these numbers. The evidence comes from open models, published estimates and developer disclosures about earlier models." },
     { label: "Hardware", value: "NVIDIA H100, H200 and B200 GPUs, plus older A100s in some image tests" },
     { label: "Data centre PUE", value: "~1.2 where a source includes data centre overhead (sources 31 and 34). Video and Deep Research figures count GPU energy only." },
-    { label: "Water Usage Effectiveness", value: "~1.8 litres per kWh on-site (used by source 34; source 14 gives ~1.9)" },
+    { label: "Water Usage Effectiveness", value: "About 0.4 litres per kWh of data centre electricity, on-site: 66 billion litres for 176 TWh across US data centres in 2023 (source 54). Water ranges on the cards also span reported on-site values, from about 0.2 (AWS, source 1) to about 1.0 (Google, source 53), because these figures are not independently audited." },
     { label: "Grid carbon intensity", value: "US average ~0.39 kg CO₂/kWh (source 38 gives 0.384 for 2024). Training cards use the carbon figures published by their sources." },
-    { label: "Water accounting", value: "Covers on-site cooling only, unless a card says otherwise. Source 14 puts the water used to generate the electricity at about 4.5 litres per kWh, so the full footprint could be more than three times higher. Chip manufacturing is excluded." }
+    { label: "Water accounting", value: "Covers on-site cooling only: water evaporated at the data centre, usually treated mains water. Power stations consume water too, mainly in cooling and through evaporation from hydro reservoirs. For US data centres this averaged about 4.5 litres per kWh in 2023 (source 54), but across one company's sites it ranged from about 1.3 to 9.5 (source 5). We leave it out because it depends heavily on the local grid, and because reservoirs also serve irrigation, flood control and water supply. Water passing through hydro turbines is not consumed. Chip manufacturing is excluded." }
+  ],
+  waterEvidence: [
+    { label: "Berkeley Lab (source 54)", value: "About 0.37 L/kWh of data centre electricity, all US data centres, 2023. Independent model, calibrated against industry-reported values." },
+    { label: "IEA, via source 53", value: "About 0.39 L/kWh of data centre electricity (0.56 per kWh of computing), worldwide, 2023. Independent estimate based on proprietary industry data." },
+    { label: "Microsoft, via Li et al. (source 5)", value: "0.55 L/kWh, US average. Company-reported." },
+    { label: "Microsoft Azure and AWS, via Jegham et al. (source 1)", value: "0.30 and 0.18 L/kWh. Company-reported." },
+    { label: "Google, via source 53", value: "About 1.04 L/kWh, calculated from Google's reported figures." },
+    { label: "Company average, via source 53", value: "0.59 L/kWh across companies reporting both water and electricity. Company-reported, company-wide." },
+    { label: "Former site figure", value: "1.8 L/kWh, which traced back to a vendor glossary (via source 34) and an undated trade guide (via source 14)." },
+    { label: "How far to trust these", value: "None is independently audited: every figure rests on company reports or on models calibrated against them. Some are per kWh of computing and some per kWh for the whole building, which explains part of the spread." }
   ],
   figureBasis: [
     { label: "Text Prompt (Instant and Reasoning)", value: "Median figures from a peer-reviewed model of production inference (source 31). The Instant figure agrees with sources 7, 8, 24 and 49." },
@@ -476,7 +487,7 @@ const methodologyData = {
     { label: "Video Generation (5s)", value: "177 Wh and 215 Wh on H200 GPUs, and 114.8 Wh at the low end, all from source 32. An independent benchmark measured about 7–322 Wh per video across five open models at their most efficient settings, counting GPU energy only (source 52)." },
     { label: "Deep Research", value: "The closest published proxy, not a direct measurement: 158 Wh for one agent on a 70B model, with 23–348 Wh across agents and model sizes (source 35)." },
     { label: "Training: 8B Model", value: "1.3 million GPU hours × 700 W = 910 MWh, and 390 tonnes CO₂e, from Meta (source 11). Water uses the on-site factor above." },
-    { label: "Training: Frontier Model", value: "Grok 4 estimates from source 34. The low end is GPT-4 at 50 GWh (source 9), with water and carbon calculated using the factors above." },
+    { label: "Training: Frontier Model", value: "Grok 4 estimates from source 34. The low end is GPT-4 at 50 GWh (source 9), with water and carbon calculated using the factors above. Water uses the on-site factor above, not source 34's figure, which also counts power-station water." },
     { label: "Other water and carbon figures", value: "Calculated from the electricity figure using the factors above." }
   ],
   leftOut: [
@@ -526,7 +537,8 @@ const methodologyData = {
       "Everyday comparisons were recalculated from sourced values, listed above.",
       "Confidence levels are now defined by type of evidence. The old ± percentages had no source.",
       "What You Can Do: we audited every tip too. Several claims were corrected or removed, and the Go Local advice now says the saving comes from using smaller models, not from running locally in itself.",
-      "Wider evidence: we added sources on what our figures leave out, including hardware manufacturing, development runs, whole-lifecycle studies, sector totals and rebound effects, and replaced source 10. No card figures changed."
+      "Wider evidence: we added sources on what our figures leave out, including hardware manufacturing, development runs, whole-lifecycle studies, sector totals and rebound effects, and replaced source 10. No card figures changed.",
+      "Water: the on-site factor fell from 1.8 to 0.4 litres per kWh. The old figure traced back to a vendor glossary; Berkeley Lab's report to Congress gives about 0.4 for US data centres in 2023. Water figures fell by about 78%, and the ranges widened to cover reported values from about 0.2 to 1.0. The frontier card now counts on-site water only, like the others."
     ]
   }
 };
